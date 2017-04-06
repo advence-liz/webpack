@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "build": "webpack --progress --colors",
-    "restore":"npm install"
+    "restore": "npm install"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
     "css-loader": "^0.23.1",
     "less": "^2.6.0",
     "less-loader": "^2.2.2",
-    "webpack": "^1.12.11"
+    "webpack": "^1.14.0"
   },
   "dependencies": {
     "babel-preset-es2015": "^6.5.0",
@@ -32,7 +32,5 @@
     "lodash": "~3.10.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
-   
-
   }
 }
