@@ -5,7 +5,9 @@
   "main": "",
   "scripts": {
     "build": "webpack --progress --colors",
-    "restore": "npm install"
+    "restore": "npm install",
+    "build:dev": "webpack --progress --profile --colors",
+    "build:dist": "webpack --progress --profile --colors prod"
   },
   "repository": {
     "type": "git",
@@ -15,6 +17,7 @@
     "react",
     "webpack"
   ],
+  "pattern":"dev",
   "author": "liz",
   "devDependencies": {
     "babel-core": "^6.5.2",
@@ -23,7 +26,7 @@
     "css-loader": "^0.23.1",
     "less": "^2.6.0",
     "less-loader": "^2.2.2",
-    "webpack": "^2.2.1"
+    "webpack": "^2.3.3"
   },
   "dependencies": {
     "babel-preset-es2015": "^6.5.0",
