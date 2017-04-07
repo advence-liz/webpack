@@ -1,6 +1,8 @@
 var webpack = require('webpack');
 var path = require("path");
 
+
+
 module.exports = {
     entry: {
         bundle: "./src/hello.js"
@@ -10,13 +12,19 @@ module.exports = {
         filename: "[name].js"
     },
     module: {
-        rules: [{
-            test: /\.js$/,
-            exclude: /(node_modules)/,
-            use: [{
-                loader: 'babel-loader'
+        rules: [
+            {
+                test: /\.js$/,
+                enforce: "pre",
+                loader: "eslint-loader"
+            },
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                use: [{
+                    loader: 'babel-loader'
+                }]
             }]
-        }]
 
     },
     context: __dirname,
@@ -32,13 +40,7 @@ module.exports = {
         // directories where to look for modules
         extensions: [".js", ".json", ".jsx", ".css"],
     },
-    // ,
-    // plugins: [
-    //     new webpack.NoErrorsPlugin(),
-    //     new webpack.HotModuleReplacementPlugin()
-    // ]
+    //     plugins: [
+    //     new UglifyJSPlugin()
+    //   ]
 };
- /**
-         * query 换为 options 也可，版本2.x 兼容1.x的部分写法总感觉会写出很奇怪的东西
-         * @param presets { mdules：false } 代表babel 不处理跟模块相关的关键字由webpack处理而且可以AMD commonjs modules 三种方式混和
-         */
