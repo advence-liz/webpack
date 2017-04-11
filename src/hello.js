@@ -1,6 +1,8 @@
 // import React from 'react';
 // import ReactDOM from 'react-dom';
+
 import a ,{fun,d}from "./a"
+
 console.log(a);
 console.log(d);
 fun();

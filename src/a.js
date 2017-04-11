@@ -1,5 +1,6 @@
+/* eslint-disable no-alert, no-console */
 function liz() {
-    console.log("eeee");
+    console("eeee");
 }
 
 var a = { liz: "eeee" };
