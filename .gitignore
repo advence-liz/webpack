@@ -7,7 +7,7 @@ test/
 build/
 .vscode/
 bower_components/
-
+npm-debug.log
 @@ -0,0 +1,43 @@
 # Windows image file caches
 Thumbs.db
