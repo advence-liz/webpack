@@ -9,15 +9,16 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: "[name].js"
+        filename: "[name].js",
+        // publicPath:"https://cdn.example.com/"
     },
     module: {
         rules: [
-            {
-                test: /\.js$/,
-                enforce: "pre",
-                loader: "eslint-loader"
-            },
+            // {
+            //     test: /\.js$/,
+            //     enforce: "pre",
+            //     loader: "eslint-loader"
+            // },
             {
                 test: /\.js$/,
                 exclude: /(node_modules)/,

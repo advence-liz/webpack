@@ -23,6 +23,6 @@
         "React": false
     },
     "rules": {
-        "no-console": "off"
+         "no-console": "off"
     }
 }
