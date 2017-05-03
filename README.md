@@ -33,8 +33,6 @@ $ npm run test//包含 build 并且启动server
   - src 测试js存放目录
     + a.js
     + hello.js
-  - test //测试html
-    + index.html
   - build //build后自动生成
     + bundle.js //合并后的文件
     + bundle.js.map    
@@ -52,6 +50,8 @@ $ npm run test//包含 build 并且启动server
     "webpack": "gulp webpack",//执行webpack 合并js 文件
     "lint": "gulp lint",//执行语法检查
     "copy": "gulp copy"//将编辑后文件copy到运行环境
+    "test":"npm run lint&&npm run webpack&&launch",//编译并启动sever且直接打开浏览器
+    "server": "webpack-dev-server --inline"//启动server
   }
 ```  
 ### webpack配置
