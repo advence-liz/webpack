@@ -11,7 +11,9 @@
     "build:dist": "webpack --env=prod --progress --profile --colors",
     "webpack": "gulp webpack",
     "lint": "gulp lint",
-    "copy": "gulp copy"
+    "copy": "gulp copy",
+    "test":"npm run lint&&npm run webpack&&launch",
+    "server": "webpack-dev-server --inline"
   },
   "repository": {
     "type": "git",
@@ -39,7 +41,8 @@
     "less": "^2.6.0",
     "less-loader": "^2.2.2",
     "uglifyjs-webpack-plugin": "^0.4.1",
-    "webpack": "^2.3.3"
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.4"
   },
   "dependencies": {
     "babel-preset-es2015": "^6.5.0",

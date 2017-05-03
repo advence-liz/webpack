@@ -14,6 +14,15 @@ $ npm install
 $ npm run build //build dev code
 
 ```
+### 启动local server
+
+```
+$ npm run server
+```
+### 运行test
+```
+$ npm run test//包含 build 并且启动server
+```
 ## 结构简介:joy::joy:
 
 + root
