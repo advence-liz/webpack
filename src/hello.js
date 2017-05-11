@@ -1,7 +1,7 @@
-// import React from 'react';
+ import React from 'react.js';
 // import ReactDOM from 'react-dom';
 
-import a ,{fun,d}from "./a"
+import a ,{fun,d}from "./a";
 
 console.log(a);
 console.log(d);
