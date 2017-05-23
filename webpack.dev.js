@@ -6,7 +6,8 @@ var path = require("path"),
 module.exports = {
     entry: {
         bundle: "./src/hello.js",
-        react:"./src/react.js"
+        // react:"./src/react.js",
+       // index:"./module_demo/index.js"
     },
     output: {
         path: path.resolve(__dirname, 'build'),

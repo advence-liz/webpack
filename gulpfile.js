@@ -37,7 +37,7 @@ gulp.task("copy", ['clean'], function () {
 
 gulp.task("webpack", function () {
     webpack(webpackConfig, function (err, stats) {
-        // console.dir(stats);
+         stats.hasErrors()&&console.error(stats.toString());
     })
 })
 /**

@@ -5,15 +5,15 @@
   "main": "webpack.config.js",
   "env": "dev",
   "scripts": {
-    "build": "npm run lint&&npm run webpack&&npm run copy",
+    "build": "npm run webpack",
     "restore": "npm install",
-    "build:dev": "webpack --env=dev --progress --colors",
-    "build:dist": "webpack --env=prod --progress --profile --colors",
+    "build:dev": "webpack --progress --colors",
+    "build:dist": "webpack --progress --profile --colors",
     "webpack": "gulp webpack",
     "lint": "gulp lint",
     "copy": "gulp copy",
     "test":"npm run lint&&npm run webpack&&launch",
-    "server": "webpack-dev-server --inline"
+    "server": "webpack-dev-server --inline --hot"
   },
   "repository": {
     "type": "git",
