@@ -1,8 +1,8 @@
 {
   "name": "react-webpack",
   "version": "1.0.0",
-  "description": "webpack demo",
-  "main": "webpack.config.js",
+  "description": "at first i want build a webpack demo,now i'd like to add something about react",
+  "main": "gulpfile.js",
   "env": "dev",
   "scripts": {
     "build": "npm run webpack",

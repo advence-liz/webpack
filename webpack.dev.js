@@ -5,7 +5,7 @@ var path = require("path"),
 
 module.exports = {
     entry: {
-        bundle: "./src/hello.js",
+        bundle: "./src/index.js",
         // react:"./src/react.js",
        // index:"./module_demo/index.js"
     },
@@ -22,7 +22,7 @@ module.exports = {
             //     loader: "eslint-loader"
             // },
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: /(node_modules)/,
                 use: [{
                     loader: 'babel-loader'
