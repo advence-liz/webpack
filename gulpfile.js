@@ -37,7 +37,7 @@ gulp.task("copy", ['clean'], function () {
 
 gulp.task("webpack", function () {
     webpack(webpackConfig, function (err, stats) {
-         stats.hasErrors()&&console.error(stats.toString());
+        console.log(stats.toString());
     })
 })
 /**
@@ -60,4 +60,4 @@ gulp.task('lint', () => {
         .pipe(eslint.failAfterError());
 });
 
-//gulp.start("webpack");
+gulp.start("webpack");
