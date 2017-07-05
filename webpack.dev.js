@@ -11,7 +11,10 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: "[name].js"
+        filename: "[name].js",
+        chunkFilename: '[name]-[id].js',
+        library: "$d",
+        publicPath: "../build/"
 
     },
 
@@ -55,10 +58,14 @@ module.exports = {
             template: 'template/_layout.html'
         })
     ],
-    devServer: {
-        contentBase: path.join(__dirname, "build"),
-        compress: true,
-        port: 9000
-    }
+    externals: [
+        'react',
+        'react-dom'
+    ],
+    // devServer: {
+    //     contentBase: path.join(__dirname, "build"),
+    //     compress: true,
+    //     port: 9000
+    // }
 
 };

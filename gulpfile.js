@@ -62,4 +62,4 @@ gulp.task('lint', () => {
         .pipe(eslint.failAfterError());
 });
 
-//gulp.start("webpack");
+gulp.start("webpack");
