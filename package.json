@@ -53,8 +53,6 @@
     "eslint-plugin-react": "^6.10.3",
     "html-webpack-plugin": "^2.8.2",
     "lodash": "~3.10.1",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
-     "bundle-loader": "^0.5.5"
+    "bundle-loader": "^0.5.5"
   }
 }
