@@ -7,27 +7,33 @@ module.exports = {
     entry: {
         bundle: "./src/index.js",
         // react:"./src/react.js",
-       // index:"./module_demo/index.js"
+        // index:"./module_demo/index.js"
     },
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: "[name].js"
 
     },
+
     module: {
         rules: [
-            // {
-            //     test: /\.js$/,
-            //     enforce: "pre",
-            //     loader: "eslint-loader"
-            // },
             {
                 test: /\.(js|jsx)$/,
-                exclude: /(node_modules)/,
-                use: [{
-                    loader: 'babel-loader'
-                }]
-            }]
+                enforce: "pre",
+                loader: "eslint-loader"
+            },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['es2015', 'react', 'stage-2']
+                     
+                    }
+                }
+            }
+        ]
 
     },
     context: __dirname,

@@ -9,6 +9,7 @@ const webpack = require('webpack'),
  * @var build {String} 文件编译后所在目录
  * @var src {String} 源文件所在目录
  */
+
 var dist, src, build, srcPath, buildPath, distPath,
     webpackConfig = require("./webpack." + pkg.env);
 src = "./src/**";
@@ -36,8 +37,9 @@ gulp.task("copy", ['clean'], function () {
  */
 
 gulp.task("webpack", function () {
+   
     webpack(webpackConfig, function (err, stats) {
-         stats.hasErrors()&&console.error(stats.toString());
+        console.error(stats.toString());
     })
 })
 /**
