@@ -12,34 +12,29 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: "[name].js",
-        chunkFilename: '[name]-[id].js',
-        library: "$d",
-        publicPath: "../build/"
+        chunkFilename: '[name]-[id].js',//bundle-loader 动态引入的文件的命名规则
+        library: "$d",//输出的lib名称 
+        publicPath: "../build/"//
 
     },
-
     module: {
         rules: [
-            {
-                test: /\.jsx$/,
-                enforce: "pre",
-                loader: "eslint-loader"
-            },
+            // {
+            //     test: /\.js$/,
+            //     enforce: "pre",
+            //     loader: "eslint-loader"
+            // },
             {
                 test: /\.(js|jsx)$/,
-                exclude: /(node_modules|bower_components)/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['es2015', 'react', 'stage-2']
-
-                        }
-                    }
-
-                ]
-            }
-        ]
+                exclude: /(node_modules)/,
+                // query: {
+                //     babelrc: false,
+                //     presets: ['es2015', 'react', 'stage-2']
+                // },
+                use: [{
+                    loader: 'babel-loader'
+                }]
+            }]
 
     },
     context: __dirname,
