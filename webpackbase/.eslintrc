@@ -1,0 +1,47 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true,
+        "amd": true,
+        "jquery": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "globals": {
+        "ReactDOM": false,
+        "React": false
+    },
+    "rules": {
+         "no-console": "off",
+        //  "react/prefer-es6-class":"error",
+        //  "react/prefer-stateless-function":"error",
+        //  "react/jsx-pascal-case":"error",
+        //  "react/jsx-closing-bracket-location":"error",
+        //  "jsx-quotes":"error",
+        //  "no-multi-spaces":"error",
+        //  "react/jsx-tag-spacing":"error",
+        //  "react/jsx-curly-spacing":"error",
+        //  "jsx-a11y/alt-text":"error",
+        //  "jsx-a11y/img-redundant-alt":"error",
+        //  "jsx-a11y/aria-role":"error",
+        //  "jsx-a11y/no-access-key":"error",
+        //  "react/no-string-refs":"error",
+        //  "react/jsx-wrap-multilines":"error",
+        //  "react/self-closing-comp":"error",
+        //  "react/jsx-no-bind":"error",
+        //  "react/require-render-return":"error"
+
+
+    }
+}
