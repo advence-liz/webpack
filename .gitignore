@@ -2,7 +2,7 @@
 ## 忽略以下目录
 #################
 node_modules/
-dist/
+
 test/
 build/
 .vscode/
