@@ -5,36 +5,38 @@ var path = require("path"),
 
 module.exports = {
     entry: {
-        bundle: "./src/index.js",
-        // react:"./src/react.js",
-        // index:"./module_demo/index.js"
+        module: "./src/module/index.js",
+       
     },
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: "[name].js",
-        chunkFilename: '[name]-[id].js',//bundle-loader 动态引入的文件的命名规则
-        library: "$d",//输出的lib名称 
-        publicPath: "../build/"//
-
+        chunkFilename: '[name]-[id].js',
+        library: "$d"
     },
+
     module: {
         rules: [
-            // {
-            //     test: /\.js$/,
-            //     enforce: "pre",
-            //     loader: "eslint-loader"
-            // },
+            {
+                test: /\.jsx$/,
+                enforce: "pre",
+                loader: "eslint-loader"
+            },
             {
                 test: /\.(js|jsx)$/,
-                exclude: /(node_modules)/,
-                // query: {
-                //     babelrc: false,
-                //     presets: ['es2015', 'react', 'stage-2']
-                // },
-                use: [{
-                    loader: 'babel-loader'
-                }]
-            }]
+                exclude: /(node_modules|bower_components)/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['es2015', 'react', 'stage-2']
+
+                        }
+                    }
+
+                ]
+            }
+        ]
 
     },
     context: __dirname,
