@@ -21,7 +21,7 @@
 
 
 
-var regg=/(?:(?:\.\.\/)|\.\/)+(?:.*\/)*(?:ScheduleList|I18NProvider|Progress|Chart|TableView|WizardSummary|MessageBar|CommonLayout|ValidationPanel|Utility|ButtonsComponent|FuncDescriptionPanel|FormSectionLayout|OverviewGrid)(?:\.jsx|\/index.jsx|\/index)*(\'|\")/
+var regg=/(?:(?:\.\.\/)|\.\/)+(?:.*\/)*(?:ScheduleList|I18NProvider|Progress|Chart|TableView|WizardSummary|MessageBar|CommonLayout|ValidationPanel|Utility|ButtonsComponent|FuncDescriptionPanel|FormSectionLayout|OverviewGrid)(?:\.jsx|\/index.jsx|\/index)?(\'|\")/
 
 
 var reg =/((ab)|(cd))ef/
