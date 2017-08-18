@@ -1,2 +1,11 @@
-export * from './md1';
-export { exp as default,e as md2e } from  './md2';
+ 
+import {version,log,md2e,exp} from "$d";
+
+ReactDOM.render(
+        <h1>Hello, wodrld!</h1>,
+        document.getElementById('root')
+      );
+
+alert(version);  
+
+

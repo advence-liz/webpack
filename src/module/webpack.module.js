@@ -1,13 +1,11 @@
 //var webpack = require('webpack');
-
-
 var path = require("path"),
     HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var layout =argv.T||'_layout';
+
 module.exports = {
     entry: {
-        index: "./src/index.js",
+        module: "./src",
        
     },
     output: {
@@ -57,12 +55,13 @@ module.exports = {
     // plugins: [
     //     new HtmlWebpackPlugin({
     //         filename: 'index.html',
-    //         template: `template/${layout}.html`
+    //         template: '../template/_layout.html'
     //     })
     // ],
-    externals: {
-        "$d":"$d"
-    }
+    externals: [
+        'react',
+        'react-dom'
+    ],
     // devServer: {
     //     contentBase: path.join(__dirname, "build"),
     //     compress: true,

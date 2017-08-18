@@ -1,14 +1,19 @@
 //var webpack = require('webpack');
+
+
 var path = require("path"),
     HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
     entry: {
-        module: "./src/module/index.js",
+        index: "./index.js",
        
     },
     output: {
+        /**
+         * @prop {String} path 绝对路径
+         */
         path: path.resolve(__dirname, 'build'),
         filename: "[name].js",
         chunkFilename: '[name]-[id].js',
@@ -39,7 +44,7 @@ module.exports = {
         ]
 
     },
-    context: __dirname,
+    context:__dirname,
     devtool: "source-map",
     target: "web",
     resolve: {
@@ -55,13 +60,12 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: 'template/_layout.html'
+            template: `../template/module.html`
         })
     ],
-    externals: [
-        'react',
-        'react-dom'
-    ],
+    externals: {
+        "$d":"$d"
+    }
     // devServer: {
     //     contentBase: path.join(__dirname, "build"),
     //     compress: true,
