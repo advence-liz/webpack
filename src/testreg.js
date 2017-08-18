@@ -13,7 +13,7 @@
  */
 // /\$d/.*/
 // '../../../../VCControlService/ControlPanel.Html/JSX/Module/StorageConfiguration/CommonLayout/CommonLayout/xxxxx';
-
+//../../../../VCControlService/ControlPanel.Html/JSX/Module/StorageConfiguration/CommonLayout/CommonLayout.less
 /\$d.less/
 
 // /\$d[^\/\'\"]+/
@@ -21,7 +21,7 @@
 
 
 
-var reg=/((\.\.\/)|\.\/)+(.*\/)*(ScheduleList|I18NProvider|Progress|Chart|TableView|WizardSummary|MessageBar|CommonLayout|ValidationPanel|Utility|ButtonsComponent|FuncDescriptionPanel|FormSectionLayout|OverviewGrid)(\.jsx|\/index.jsx|\/index)/
+var reg=/((\.\.\/)|\.\/)+(.*\/)*(ScheduleList|I18NProvider|Progress|Chart|TableView|WizardSummary|MessageBar|CommonLayout|ValidationPanel|Utility|ButtonsComponent|FuncDescriptionPanel|FormSectionLayout|OverviewGrid)(\.jsx|\/index.jsx|\/index)*\'/
 
 
 
