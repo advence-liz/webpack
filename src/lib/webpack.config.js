@@ -15,8 +15,9 @@ module.exports = {
          * @prop {String} path 绝对路径
          */
         path: path.resolve(__dirname, 'build'),
-        filename: "[name].js"
-       
+        filename: "[name].js",
+        chunkFilename: '[name]-[id].js',
+        library: "$d"
     },
 
     module: {
@@ -59,11 +60,21 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: `../template/module.html`
+            template: `../template/lib.html`
         })
     ],
     externals: {
-        "$d":"$d"
+       /**全局引用库 */
+       'react': ' window.__lib.React',
+       'react-dom': ' window.__lib.ReactDOM',
+       'react-router-dom': ' window.__lib.ReactRouterDOM',
+       'redux': ' window.__lib.Redux',
+       'react-redux': ' window.__lib.ReactRedux',
+       'react-router': ' window.__lib.ReactRouter',
+       'crypto-js': 'window.__lib.CryptoJS',
+       'copy-to-clipboard': 'window.__lib.Copy',
+       'babel-polyfill': 'window.__lib.BabelPolyfill',
+       'prop-types': 'window.__lib.PropTypes'
     }
     // devServer: {
     //     contentBase: path.join(__dirname, "build"),

@@ -17,11 +17,11 @@ module.exports = {
 
     module: {
         rules: [
-            {
-                test: /\.jsx$/,
-                enforce: "pre",
-                loader: "eslint-loader"
-            },
+            // {
+            //     test: /\.(jsx|js)$/,
+            //     enforce: "pre",
+            //     loader: "eslint-loader"
+            // },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
@@ -52,20 +52,11 @@ module.exports = {
         // directories where to look for modules
         extensions: [".js", ".json", ".jsx", ".css"],
     },
-    // plugins: [
-    //     new HtmlWebpackPlugin({
-    //         filename: 'index.html',
-    //         template: '../template/_layout.html'
-    //     })
-    // ],
+   
     externals: [
         'react',
         'react-dom'
     ],
-    // devServer: {
-    //     contentBase: path.join(__dirname, "build"),
-    //     compress: true,
-    //     port: 9000
-    // }
+   
 
 };
