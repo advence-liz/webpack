@@ -1,5 +1,5 @@
  
-import {version,log,md2e,exp} from "$d";
+import math {version,log,e} from "$d";
 
 ReactDOM.render(
         <h1>Hello, wodrld!</h1>,
