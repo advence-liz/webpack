@@ -26,6 +26,7 @@ export * from '../../../../VCControlService/ControlPanel.Html/JSX/Module/Storage
 /(?:(?:\.\.\/)|\.\/)+(?:.*\/)*(?:ScheduleList|I18NProvider|Progress|Chart|TableView|WizardSummary|MessageBar|CommonLayout|ValidationPanel|Utility|ButtonsComponent|FormSectionLayout|OverviewGrid)(?:\.jsx|\/index.jsx|\/index)?(\'|\")/
 ```
 然后在CP 工程下replace $d$1
+![](reg1.png)
 
 ### 将 import xx from 'xxxxxx' 改为 import {xxx} from 'xxx'
 ```javascript
@@ -33,7 +34,7 @@ export * from '../../../../VCControlService/ControlPanel.Html/JSX/Module/Storage
 /import (TableView|WizardSummary|MessageBar|Progress|ButtonsComponent|FormSectionLayout|ValidationPanel|I18NProvider|CommonLayout){1} from/
 ```
 然后在CP 工程下replace import {$1} from
-
+![](reg2.png)
 原因：这些作为公共的模块的有的是以这两种形式（exprot default & module.exports）导出的都被我改成 exprot{ moduleNmae}的形式。 
 
 所以引入的时候就必须改为 import {moduleName} from "$d" 的形式，
