@@ -21,7 +21,7 @@
 
 
 
-var regg=/(?:(?:\.\.\/)|\.\/)+(?:.*\/)*(?:ScheduleList|I18NProvider|Progress|Chart|TableView|WizardSummary|MessageBar|CommonLayout|ValidationPanel|Utility|ButtonsComponent|FuncDescriptionPanel|FormSectionLayout|OverviewGrid)(?:\.jsx|\/index.jsx|\/index)*\'/
+
 
 
 var reg =/((ab)|(cd))ef/
@@ -29,9 +29,9 @@ var reg =/((ab)|(cd))ef/
 
 
 export * from '../Component/Common/ScheduleList';
-export * from '../Component/Common/I18NProvider.jsx';
+export * from '../Component/Common/I18NProvider.jsx'; -
 
-export * from '../Component/Common/Progress.jsx';
+export * from '../Component/Common/Progress.jsx';-
 export * from '../Component/Chart.jsx';
 export {default as TableView} from'../Component/TableView.jsx';
 export {default as WizardSummary} from'../Component/WizardSummary.jsx';
