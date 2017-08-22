@@ -4,14 +4,13 @@
 
 
 /**
- * 全部匹配 Ab
  * 注意一下在vscode里不需要首尾的分隔符
  * ((\.\.\/)|\.\/)+   ../../ ./
  * (.*\/)*   xxx/ xxx/xxxx/
  * (ScheduleList|I18NProvider|Progress|Chart|TableView|WizardSummary|MessageBar|CommonLayout|ValidationPanel|Utility|ButtonsComponent|FuncDescriptionPanel|FormSectionLayout|OverviewGrid)  component name
  * (?:\.jsx|\/index.jsx|\/index)?  可选文件后缀
- * (\'|\") 捕获 ' or " 
- * $d$1
+ * (\'|\") 捕获 ' or " 也就是 replace 时的$1
+ * $d$1  $d 为全局变量名（即namespace） $1 为捕获（即 ' or ")
  */
 // /\$d/.*/
 // '../../../../VCControlService/ControlPanel.Html/JSX/Module/StorageConfiguration/CommonLayout/CommonLayout/xxxxx';

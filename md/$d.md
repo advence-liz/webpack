@@ -1,5 +1,5 @@
-# $d 的替换
-
+# $d 的施工方案
+分割思路详情上篇[模块分割方案](模块分割方案.md)
 ## 抽离的模块
 ```javascript
 export * from '../Component/Common/ScheduleList';
@@ -22,6 +22,16 @@ export * from '../../../../VCControlService/ControlPanel.Html/JSX/Module/Storage
 ## 施工步骤
 ### 将 import xxx from 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx' 改为 import xxx from "$d"
 ```javascript
+
+/**
+ * 注意一下在vscode里不需要首尾的分隔符
+ * ((\.\.\/)|\.\/)+   ../../ ./
+ * (.*\/)*   xxx/ xxx/xxxx/
+ * (ScheduleList|I18NProvider|Progress|Chart|TableView|WizardSummary|MessageBar|CommonLayout|ValidationPanel|Utility|ButtonsComponent|FuncDescriptionPanel|FormSectionLayout|OverviewGrid)  component name
+ * (?:\.jsx|\/index.jsx|\/index)?  可选文件后缀
+ * (\'|\") 捕获 ' or " 也就是 replace 时的$1
+ * $d$1  $d 为全局变量名（即namespace） $1 为捕获（即 ' or ")
+ */
 //完成本步骤的正则
 /(?:(?:\.\.\/)|\.\/)+(?:.*\/)*(?:ScheduleList|I18NProvider|Progress|Chart|TableView|WizardSummary|MessageBar|CommonLayout|ValidationPanel|Utility|ButtonsComponent|FormSectionLayout|OverviewGrid)(?:\.jsx|\/index.jsx|\/index)?(\'|\")/
 ```
@@ -31,7 +41,7 @@ export * from '../../../../VCControlService/ControlPanel.Html/JSX/Module/Storage
 ### 将 import xx from 'xxxxxx' 改为 import {xxx} from 'xxx'
 ```javascript
 //完成本步骤的正则
-/import (TableView|WizardSummary|MessageBar|Progress|ButtonsComponent|FormSectionLayout|ValidationPanel|I18NProvider|CommonLayout){1} from/
+/import (TableView|OverviewGrid|WizardSummary|MessageBar|Progress|ButtonsComponent|FormSectionLayout|ValidationPanel|I18NProvider|CommonLayout){1} from/
 ```
 然后在CP 工程下replace import {$1} from
 ![](reg2.png)
@@ -44,3 +54,5 @@ export * from '../../../../VCControlService/ControlPanel.Html/JSX/Module/Storage
 $ gulp build:common //build common component
 $ gulp build:cp //build cp
 $ gulp build //build 所有
+
+import CommonLayout from '../../../../../StorageConfiguration/CommonLayout/CommonLayout';
