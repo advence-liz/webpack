@@ -1,3 +1,5 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 // The chunk is requested, when you require the bundle
 var waitForChunk = require("bundle-loader?name=[name]!./file.js");
 

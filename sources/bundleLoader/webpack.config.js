@@ -1,6 +1,6 @@
 //var webpack = require('webpack');
-
-
+var HappyPack = require('happypack');
+var happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 var path = require("path"),
     HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -31,16 +31,16 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['es2015', 'react', 'stage-2']
+                use:{  loader: 'happypack/loader?id=jsx'}
+                // use: [
+                //     {
+                //         loader: 'babel-loader',
+                //         options: {
+                //             presets: ['es2015', 'react', 'stage-2']
 
-                        }
-                    }
-
-                ]
+                //         }
+                //     }
+                // ]
             }
         ]
 
@@ -62,9 +62,16 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: `../template/_layout.html`
+        }),
+        new HappyPack({
+            id: 'jsx',
+            threads: 2,
+            loaders: ['babel-loader?presets[]=react,presets[]=stage-2&cacheDirectory=./babel_cache/dev'],
+            threadPool: happyThreadPool
+           
+       
         })
     ]
 
-    
 
 };

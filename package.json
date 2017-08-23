@@ -36,6 +36,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.2",
+    "happypack": "^4.0.0-beta.2",
     "html-webpack-plugin": "^2.8.2",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
