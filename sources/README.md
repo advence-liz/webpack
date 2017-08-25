@@ -1,6 +1,5 @@
 # webpack 
 
-
 ## REF
 - [webpack optimize example](https://github.com/advence-liz/webpack-optimize-example)
 - [webpack](https://github.com/webpack/webpack)
@@ -10,6 +9,9 @@
 - less //less->css->js 将样式嵌入到js 和分离俩种方案
 - lib  //将常用库打包到一起并导出到全局 配置 externals
 - module //测试组合公共component 在入口文件引入方案
+## 关于性能优化
+
+测试了六七种方案，最终只有 babelCache 和 文件拆分效果明显，
 
 ## Thinking
 
