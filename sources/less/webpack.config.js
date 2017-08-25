@@ -7,21 +7,32 @@ var path = require("path"),
 
 module.exports = {
     entry: {
-        index: "./index.js",
+        index: "./index",
 
     },
     output: {
         path: path.resolve(__dirname, 'build'),
         filename: "[name].js"
-    
+
     },
 
     module: {
         rules: [
+            // {
+            //     test: /\.jsx$/,
+            //     enforce: "pre",
+            //     loader: "eslint-loader"
+            // },
             {
-                test: /\.jsx$/,
-                enforce: "pre",
-                loader: "eslint-loader"
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192
+                        }
+                    }
+                ]
             },
             {
                 test: /\.less$/,
@@ -68,9 +79,9 @@ module.exports = {
             filename: 'index.html',
             template: `../template/_layout.html`
         })
-      
+
     ],
-   
+
     // devServer: {
     //     contentBase: path.join(__dirname, "build"),
     //     compress: true,

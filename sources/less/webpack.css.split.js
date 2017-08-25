@@ -1,14 +1,12 @@
 //var webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const extractCSS = new ExtractTextPlugin('stylesheets/[name]-one.css');
-const extractLESS = new ExtractTextPlugin('stylesheets/[name]-two.css');
 var path = require("path"),
     HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
     entry: {
-        index: "./index.js",
+        index: "./index",
 
     },
     output: {
@@ -19,10 +17,21 @@ module.exports = {
 
     module: {
         rules: [
+            // {
+            //     test: /\.jsx$/,
+            //     enforce: "pre",
+            //     loader: "eslint-loader"
+            // },
             {
-                test: /\.jsx$/,
-                enforce: "pre",
-                loader: "eslint-loader"
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192
+                        }
+                    }
+                ]
             },
             {
                 test: /\.less$/,
@@ -71,6 +80,6 @@ module.exports = {
         }),
     ]
 
-    
+
 
 };
