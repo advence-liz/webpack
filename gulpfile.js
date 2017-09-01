@@ -1,3 +1,4 @@
+"use strict"
 const webpack = require('webpack'),
     clean = require("gulp-clean"),
     gulp = require('gulp'),
