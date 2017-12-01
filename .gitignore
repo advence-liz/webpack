@@ -2,12 +2,14 @@
 ## 忽略以下目录
 #################
 node_modules/
-
+out/
 test/
+#dist/
 build/
 .vscode/
+*.log
 bower_components/
-npm-debug.log
+
 @@ -0,0 +1,43 @@
 # Windows image file caches
 Thumbs.db
