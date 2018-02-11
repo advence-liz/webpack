@@ -1,6 +1,6 @@
 @echo off
 title build lib.bundle.js
-
+echo "build lib.bundle.js"
 goto choice
 
 :continue&leave
@@ -10,21 +10,21 @@ goto choice
  if errorlevel 1 goto choice
 
 :choice
- echo E:exit,C:build compress,B:build project.
- choice/c:ecb 
- if errorlevel 3 goto build
- if errorlevel 2 goto compress
- if errorlevel 1 goto exit
+ echo B:"bulid",C:"build&compress",E:"exit""
+ choice/c:bce
+ if errorlevel 3 goto E
+ if errorlevel 2 goto C
+ if errorlevel 1 goto B
 
-
-
-:compress 
- echo build&compress!
+:C 
+ echo "build&compress!"
  node ..\..\node_modules\webpack\bin\webpack  --config webpack.lib.min.js
+ echo "build&compress done!"
  goto continue&leave
 
-:build
- echo build!
+:B
+ echo "build!"
  node ..\..\node_modules\webpack\bin\webpack  --config webpack.lib.js
+ echo "build done!"
  goto continue&leave
 
