@@ -7,7 +7,7 @@ module.exports = {
   extends: "standard",
   parserOptions: {
     ecmaFeatures: {
-      experimentalObjectRestSpread: true,
+      ecmaVersion: es2016,
       jsx: true
     },
     sourceType: "module"
