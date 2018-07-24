@@ -1,0 +1,22 @@
+{
+  "presets": [
+    "env",
+    "react",
+    "stage-2"
+ 
+  ],
+  "plugins": [
+    ["react-css-modules",{
+      "filetypes": {
+        ".scss": {
+          "syntax": "postcss-scss",
+          "plugins": [
+            "postcss-nested"
+          ]
+        }
+      },
+      "generateScopedName":"[path]___[name]__[local]___[hash:base64:5]"
+    }
+   ]
+  ]
+}

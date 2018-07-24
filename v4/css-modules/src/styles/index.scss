@@ -1,0 +1,11 @@
+@import "global";
+.title {
+  color: rebeccapurple;
+  &--green {
+    color: chocolate;
+  }
+}
+.cc{
+  color: red;
+}
+

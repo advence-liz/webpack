@@ -29,10 +29,13 @@ module.exports = {
           },
           {
             loader: 'css-loader', // translates CSS into CommonJS
-            options: { modules: true }
+            options: {
+              modules: true,
+              localIdentName: `[path]___[name]__[local]___[hash:base64:5]`
+            }
           },
           {
-            loader: 'less-loader' // compiles Less to CSS
+            loader: 'less-loader' // creates style nodes from JS strings
           }
         ]
       },
@@ -43,7 +46,11 @@ module.exports = {
             loader: 'style-loader'
           },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: `[path]___[name]__[local]___[hash:base64:5]`
+            }
           },
           {
             loader: 'sass-loader'
@@ -60,7 +67,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.less', '.scss']
+    extensions: ['.js', '.jsx', '.scss']
   },
   devtool: 'source-map',
   plugins: [

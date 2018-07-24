@@ -1,0 +1,13 @@
+/* 定义多个全局样式 */
+:global {
+    .h1 {
+      font-size: 48px;
+    }
+    .link {
+      color: green;
+    }
+    .box {
+      color: yellow;
+    }
+  }
+  
