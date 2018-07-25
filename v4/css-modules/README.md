@@ -5,8 +5,7 @@ css 模块化的需求也越来越迫切，本次为了解决项目中 css 名�
 
 ## [css-modules](https://github.com/css-modules/css-modules)
 
-css-moduels 用起来大概是这个样子,一般通过 webpack 使用,开启 css-lodaer 的 modules 功能,
-样式以一个 JavaScript 对象的形式传递给了引用样式的 js 文件
+> css-moduels 用起来大概是这个样子,一般通过 webpack 使用,开启 css-lodaer 的 modules 功能
 
 ### webpack 配置
 
@@ -24,8 +23,15 @@ css-moduels 用起来大概是这个样子,一般通过 webpack 使用,开启 cs
 
 ```css
 /* style.css */
+/* 本地样式输出后名字为指定规则加上hash 值 */
 .className {
   color: green;
+}
+/* 全局样式输出后不会改变名字 */
+:global {
+  .global-class-name {
+    color: green;
+  }
 }
 ```
 
@@ -36,14 +42,14 @@ import styles from "./style.css"
 // import { className } from "./style.css";
 
 element.innerHTML = '<div class="' + styles.className + '">'
+
+//styles.className 大约这个样子（可以个性化配置）  .src-styles-___index__className___3riMm
+
 ```
 
-## css-modules in react
+#### css-modules in react
 
-> 书写 react 许多人偏好 css in js 方案，而且 css-modules 看起来就是一个 css in js 的缓和方案，虽然书写的是 css 文件 但是使用的时候也是通过 js 对象，
-> 而且这种方式完美的契合 JSX
-
-### react code
+css-modules  很好的契合 JSX ,在 react 中可以  充分发挥其力量，其大体形式如下
 
 ```js
 import React from "react"
@@ -63,7 +69,7 @@ export default class Table extends React.Component {
 }
 ```
 
-### output
+渲染结果
 
 ```html
 <div class="table__table___32osj">
@@ -74,9 +80,9 @@ export default class Table extends React.Component {
 </div>
 ```
 
-## react-css-modules
+## [react-css-modules](https://github.com/gajus/react-css-modules)
 
-> 上面的 css-modules in react 在输出结果上很完美，只不过书写代码就有些乏力,试想一下如果一个 DOM 元素有多个 class怎么搞?class 命名不是驼峰规则怎么?所以也就引入了 react-css-modules 方案
+> 上面的 css-modules in react 在输出结果上很完美，只不过书写代码就有些乏力,试想一下如果一个 DOM 元素有多个 class 怎么搞?class 命名不是驼峰规则怎么?所以也就引入了 react-css-modules 方案
 
 - `export` 组件的时候用 `CSSModules` 包装一下
 - `<div className='global-css' styleName='local-module'></div>` `styleName` 是本地样式 `calssName` 代表全局样式
@@ -102,7 +108,7 @@ class Table extends React.Component {
 export default CSSModules(Table, styles)
 ```
 
-## babel-plugin-react-css-modules
+## [babel-plugin-react-css-modules](https://github.com/gajus/babel-plugin-react-css-modules)
 
 > 使用 react-css-modules 需要显示的引用 CSSModules 总是感觉不爽, 而 babel-plugin-react-css-modules 提供了更简单的方式在打包流程中转化处理,基本跟原来书写样式的方式一模一样
 
