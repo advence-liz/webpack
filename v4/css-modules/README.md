@@ -44,7 +44,6 @@ import styles from "./style.css"
 element.innerHTML = '<div class="' + styles.className + '">'
 
 //styles.className 大约这个样子（可以个性化配置）  .src-styles-___index__className___3riMm
-
 ```
 
 #### css-modules in react
