@@ -8,11 +8,11 @@
   "plugins": [
     ["react-css-modules",{
       "filetypes": {
-        ".scss": {
-          "syntax": "postcss-scss",
-          "plugins": [
-            "postcss-nested"
-          ]
+        ".less": {
+          "syntax": "postcss-less",
+         "plugins": [
+         "postcss-nested"
+        ]
         }
       },
       "generateScopedName":"[path]___[name]__[local]___[hash:base64:5]"

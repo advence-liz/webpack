@@ -1,6 +1,6 @@
 import React from 'react'
 // import CSSModules from 'react-css-modules'
-import './styles/index.scss'
+import './styles/index.less'
 // @CSSModules(styles, { allowMultiple: true })
 class Bar extends React.Component {
   render () {
