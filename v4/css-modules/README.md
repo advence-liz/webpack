@@ -23,7 +23,7 @@ css 模块化的需求也越来越迫切，本次为了解决项目中 css 名�
 
 ```css
 /* style.css */
-/* 本地样式输出后名字为指定规则加上hash 值 */
+/* 本地样式输出后名字为指定规则加上hash值 */
 .className {
   color: green;
 }
@@ -81,7 +81,7 @@ export default class Table extends React.Component {
 
 ## [react-css-modules](https://github.com/gajus/react-css-modules)
 
-> 上面的 css-modules in react 在输出结果上很完美，只不过书写代码就有些乏力,试想一下如果一个 DOM 元素有多个 class 怎么搞?class 命名不是驼峰规则怎么搞?所以也就引入了 react-css-modules 方案
+> 上面的css-modules in react在输出结果上很完美,只不过书写代码就有些乏力,试想一下如果一个DOM元素有多个class怎么搞?class命名不是驼峰规则怎么搞?所以也就引入了 react-css-modules方案
 
 - `export` 组件的时候用 `CSSModules` 包装一下
 - `<div className='global-css' styleName='local-module'></div>` `styleName` 是本地样式 `calssName` 代表全局样式
@@ -109,7 +109,7 @@ export default CSSModules(Table, styles)
 
 ## [babel-plugin-react-css-modules](https://github.com/gajus/babel-plugin-react-css-modules)
 
-> 使用 react-css-modules 需要显示的引用 CSSModules 总是感觉不爽, 而 babel-plugin-react-css-modules 提供了更简单的方式在打包流程中转化处理,基本跟原来书写样式的方式一模一样
+> 使用 react-css-modules 需要显示的引用CSSModules总是感觉不爽,而babel-plugin-react-css-module提供了更简单的方式在打包流程中转化处理,基本跟原来书写样式的方式一模一样
 
 ```jsx
 import React from "react"
