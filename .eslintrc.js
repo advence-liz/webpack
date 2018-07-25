@@ -7,7 +7,6 @@ module.exports = {
   extends: "standard",
   parserOptions: {
     ecmaFeatures: {
-      ecmaVersion: es2016,
       jsx: true
     },
     sourceType: "module"

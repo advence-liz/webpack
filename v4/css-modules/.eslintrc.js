@@ -4,15 +4,15 @@ module.exports = {
     node: true
   },
   parser: 'babel-eslint',
-  extends: 'standard',
+  extends: ['standard', 'plugin:react/recommended'],
   parserOptions: {
     ecmaFeatures: {
-      experimentalObjectRestSpread: true,
       jsx: true
     }
   },
   plugins: ['react'],
   rules: {
-    'no-console': 'off'
+    'no-console': 'off',
+    // 'react/jsx-uses-vars': 2
   }
 }
