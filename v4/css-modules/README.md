@@ -48,7 +48,7 @@ element.innerHTML = '<div class="' + styles.className + '">'
 
 #### css-modules in react
 
-css-modules  很好的契合 JSX ,在 react 中可以  充分发挥其力量，其大体形式如下
+css-modules很好的契合JSX,在react中可以充分发挥其力量，其大体形式如下
 
 ```js
 import React from "react"
