@@ -81,7 +81,7 @@ export default class Table extends React.Component {
 
 ## [react-css-modules](https://github.com/gajus/react-css-modules)
 
-> 上面的 css-modules in react 在输出结果上很完美，只不过书写代码就有些乏力,试想一下如果一个 DOM 元素有多个 class 怎么搞?class 命名不是驼峰规则怎么?所以也就引入了 react-css-modules 方案
+> 上面的 css-modules in react 在输出结果上很完美，只不过书写代码就有些乏力,试想一下如果一个 DOM 元素有多个 class 怎么搞?class 命名不是驼峰规则怎么搞?所以也就引入了 react-css-modules 方案
 
 - `export` 组件的时候用 `CSSModules` 包装一下
 - `<div className='global-css' styleName='local-module'></div>` `styleName` 是本地样式 `calssName` 代表全局样式
