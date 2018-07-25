@@ -1,0 +1,22 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": [
+            "> 1%", 
+            "last 2 versions", 
+            "iOS >= 8",
+            "Android >= 4"]
+        },
+        "modules": false,
+        "useBuiltIns": true,
+        "debug": true
+      }
+    ],
+    "react",
+    "stage-2"
+ 
+  ]
+}

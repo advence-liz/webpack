@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>{{htmlWebpackPlugin.options.title}}</title>
+    <script src="https://cdn.bootcss.com/react/15.6.2/react.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
+</head>
+{{set data = htmlWebpackPlugin.options.data}}
+<body>
+
+    <div id="{{data.name}}">
+        <h1>{{data.name}} DEMO</h1>
+        <p>修改模板页webpack会从新执行但是并不会自动 reload</p>
+    
+    </div>
+    <div id="q-{{data.name}}"></div>
+    <script type="text/javascript" src="{{data.name}}.js"></script>
+</body>
+
+</html>
