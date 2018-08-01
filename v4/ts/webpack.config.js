@@ -22,17 +22,6 @@ module.exports = {
         ]
       },
       {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'babel-loader'
-          },
-          {
-            loader: 'ts-loader'
-          }
-        ]
-      },
-      {
         test: /\.(less|css)$/,
         use: [
           {
