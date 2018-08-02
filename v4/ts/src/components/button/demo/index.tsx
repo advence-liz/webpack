@@ -8,6 +8,6 @@ export default class ButtonDemo extends React.Component {
   state = {}
 
   render() {
-    return <Button {...props} />
+    return <Butt on {...props} />
   }
 }
