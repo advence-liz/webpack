@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --content-base=build --color",
-    "build":"webpack"
+    "build": "webpack"
   },
   "keywords": [
     "webpack"
@@ -16,6 +16,7 @@
   "devDependencies": {
     "art-template": "^4.12.2",
     "art-template-loader": "^1.4.3",
+    "awesome-typescript-loader": "^5.2.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-polyfill": "^6.26.0",
@@ -29,8 +30,15 @@
     "less-loader": "^4.1.0",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
+    "typescript": "^3.0.1",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.4"
+  },
+  "dependencies": {
+    "@types/react": "^16.4.6",
+    "@types/react-dom": "^16.0.6",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
   }
 }

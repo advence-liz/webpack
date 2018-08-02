@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
-  entry: './src/',
+  entry: './src/index.tsx',
   mode: 'development',
   context: __dirname,
   output: {
@@ -18,6 +18,17 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader'
+          }
+        ]
+      },
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'babel-loader'
+          },
+          {
+            loader: 'awesome-typescript-loader'
           }
         ]
       },
@@ -60,7 +71,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.less', '.scss']
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.less', '.scss']
   },
   devtool: 'source-map',
   plugins: [

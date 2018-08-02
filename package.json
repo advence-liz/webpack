@@ -15,7 +15,8 @@
     "webpack",
     "eslint"
   ],
-  "author": "liz",
+  "author": "advence-liz",
+  "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.5.2",
     "babel-eslint": "^8.2.6",

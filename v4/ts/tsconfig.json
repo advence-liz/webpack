@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      // "outDir": "./dist/",
+      "sourceMap": true,
+      "noImplicitAny": true,
+      "moduleResolution": "node",
+      "jsx": "preserve",
+      "module": "es2015",
+      "target": "es2016",
+    //   "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "strictNullChecks": true,
+    //"declaration": true,
+      "allowSyntheticDefaultImports": true,
+    //   "allowUnreachableCode":true,
+    //   "allowUnusedLabels":true,
+    //   "traceResolution":true
+    },
+    "include": ["./src/**/*.tsx"]
+  }
