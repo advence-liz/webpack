@@ -2,22 +2,25 @@
   "compilerOptions": {
     // "allowJs": true,
     "sourceMap": true,
-    // "noImplicitAny": true,
+    "strict": true,
+    "noImplicitAny": false,
     "moduleResolution": "node",
     "jsx": "preserve",
     "module": "es2015",
     "target": "es2016",
-    //   "noUnusedLocals": true,
+    "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strictNullChecks": true,
-    //"declaration": true,
     "allowSyntheticDefaultImports": true,
-     "skipLibCheck": true,
-    "experimentalDecorators":true,
-    "lib": ["es2015", "dom"]
-    //   "allowUnreachableCode":true,
-    //   "allowUnusedLabels":true,
-    //   "traceResolution":true
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    // "traceResolution":true,
+    "lib": ["es2015", "dom"],
+    "baseUrl": "./src",
+    "paths": {
+      // "paths": ["paths"],
+      // "*": ["*", "path-resolve/*"],
+      "*": ["*"]
+    }
   },
-  "include": ["./src/**/*.tsx"]
+  "include": ["./src/**/*"]
 }

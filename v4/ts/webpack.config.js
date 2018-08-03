@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+
 module.exports = {
   entry: './src/index.tsx',
   mode: 'development',
@@ -28,7 +30,10 @@ module.exports = {
             loader: 'babel-loader'
           },
           {
-            loader: 'awesome-typescript-loader'
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true
+            }
           }
         ]
       },
@@ -71,7 +76,8 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.less', '.scss']
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.less', '.scss'],
+    plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })]
   },
   devtool: 'source-map',
   plugins: [
@@ -83,15 +89,7 @@ module.exports = {
       template: 'template/_layout.ejs',
       favicon: 'template/favicon.ico',
       // inject: false,
-      title: 'webpack'
-    }),
-    new webpack.DefinePlugin({
-      PRODUCTION: true,
-      VERSION: JSON.stringify('5fa3b9'),
-      BROWSER_SUPPORTS_HTML5: true,
-      TWO: '1+1',
-      'typeof window': JSON.stringify('object'),
-      'process.env.NODE_ENV': JSON.stringify('production')
+      title: 'ts'
     })
   ]
 }
