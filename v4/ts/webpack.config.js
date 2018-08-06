@@ -77,6 +77,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.less', '.scss'],
+    alias: {
+      'path-resolve': path.join(__dirname, 'src/path-resolve')
+    },
     plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })]
   },
   devtool: 'source-map',
