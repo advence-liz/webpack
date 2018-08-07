@@ -9,13 +9,18 @@
             "last 2 versions", 
             "iOS >= 8",
             "Android >= 4"]
-        },
-        "useBuiltIns": true,
-        "debug": true
+        }
       }
     ],
     "react",
-    "stage-2"
- 
+    "stage-1"
+  ],
+  "plugins": [
+    ["transform-runtime", {
+      "helpers": true,
+      "polyfill": true,
+      "regenerator": true,
+      "moduleName": "babel-runtime"
+    }]
   ]
 }
