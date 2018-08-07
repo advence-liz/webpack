@@ -3,16 +3,16 @@ module.exports = {
     es6: true,
     node: true
   },
-  parser: "babel-eslint",
-  extends: "standard",
+  parser: 'babel-eslint',
+  extends: ['standard', 'plugin:react/recommended'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true
-    },
-    sourceType: "module"
+    }
   },
-
+  plugins: ['react'],
   rules: {
-    "no-console": "off"
+    'no-console': 'off',
+    // 'react/jsx-uses-vars': 2
   }
 }

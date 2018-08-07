@@ -1,6 +1,6 @@
 # dll
 
-- 当使用`dllplugin`的时候在起源中会显得 entry 必须是数组
+- 当使用`dllplugin`的时候其插件源码中会限定 entry 必须是数组
 - 直接观察 webpack 生成的 sourcemap 的 external 和 delegated 直观的辨别配置是否起效
 
 ## mapped 模式
@@ -12,3 +12,6 @@
 
 - `context`无效,只要给 scope 一个名字就可以就可以，以名字为前缀引用了显然这种方案更方便移植
 - 引用的时候大概这样 `import b from 'abc/dll/b'`
+
+## TODO
+[ ] 验证当使用ts的时候 scoped 模式是否会有问题，感觉得配置 path
