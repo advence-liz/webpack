@@ -35,17 +35,17 @@ export default class ParentValidation extends React.Component {
     const equationStyle = { padding: 5, background: `#eaeaea` }
     return (
       <Row>
-        <Col span={8} style={equationStyle}>
+        <Col span={6} style={equationStyle}>
           {`${equation}`}
         </Col>
-        <Col span={8}>
+        <Col span={6}>
           <Input
             style={{ borderRadius: 0 }}
             // placeholder={'请输入验证码'}
             onChange={this.handleChange}
           />
         </Col>
-        <Col style={{ padding: 5, background: `#fff`, color: 'red' }} span={8}>
+        <Col style={{ padding: 5, background: `#fff`, color: 'red' }} span={6}>
           {!isInit && !isPass ? '验证码错误' : ''}
         </Col>
       </Row>

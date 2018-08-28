@@ -65,7 +65,7 @@ export default class Absence extends React.Component {
           </Row>
           <Row style={{ marginTop: 20 }}>
             <Col span={6}>家长验证</Col>
-            <Col span={12}>
+            <Col span={18}>
               <ParentValidation
                 isInit={this.state.isInit}
                 isPass={this.state.isPass}

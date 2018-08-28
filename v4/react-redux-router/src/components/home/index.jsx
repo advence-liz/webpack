@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import MySchedule from '../my-schedule'
 
 class Home extends React.Component {
   static defaultProps = {
@@ -19,6 +20,11 @@ class Home extends React.Component {
     return (
       <div>
         <h1>Home</h1>
+        <MySchedule
+          onChange={this.props.onChange}
+          scheduleData={{ '2018-08-27': 2, '2018-08-28': 2 }}
+          // scheduleData={[{ date: '2018-08-27' },{ date: '2018-08-27' }]}
+        />
       </div>
     )
   }
