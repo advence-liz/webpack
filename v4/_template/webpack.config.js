@@ -60,13 +60,6 @@ module.exports = {
             loader: 'sass-loader'
           }
         ]
-      },
-      {
-        test: /\.(art|ejs)$/,
-        loader: 'art-template-loader',
-        options: {
-          compileDebug: true
-        }
       }
     ]
   },
