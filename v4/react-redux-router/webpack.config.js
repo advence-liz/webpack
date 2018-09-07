@@ -64,6 +64,10 @@ module.exports = {
       pages: path.resolve('src', 'pages')
     }
   },
+  devServer: {
+    historyApiFallback: true,
+    hot: true
+  },
   devtool: 'source-map',
   plugins: [
     new webpack.NamedModulesPlugin(),
