@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Absence from 'absence'
-import { setStore } from 'actions/absence'
+import actionFactory from 'actions/action-factory'
 import { push } from 'connected-react-router'
 import { Button } from 'antd'
-
+const setStoreAction = actionFactory('ABSENCE')
 class Page extends React.Component {
   static defaultProps = {}
   onClick = () => {
@@ -34,7 +34,7 @@ function mapStateToProps (state) {
 function mapDispatchToProps (dispatch) {
   return {
     setStore (state, type) {
-      dispatch(setStore(state, type))
+      dispatch(setStoreAction(state, type))
     },
     dispatch (action) {
       dispatch(action)

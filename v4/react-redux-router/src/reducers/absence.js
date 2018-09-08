@@ -1,5 +1,5 @@
-import reducerFactory from './reducerFactory'
+import reducerFactory from 'reducers/reducer-factory'
 const Namespace = 'ABSENCE'
-const DefaultState = { visible: false }
-const absence = reducerFactory(DefaultState, Namespace)
+const initState = { visible: false }
+const absence = reducerFactory(initState, Namespace)
 export default absence

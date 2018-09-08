@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import reducerFactory from './reducerFactory'
+import reducerFactory from './reducer-factory'
 import absence from './absence'
 const reducers = combineReducers({
   root: reducerFactory({ name: 'root' }, 'ROOT'),
