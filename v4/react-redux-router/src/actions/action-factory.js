@@ -1,4 +1,4 @@
-export default function createSetStore (Namespace) {
+export default function createSetStore (Namespace, dispatch) {
   /**
    *
    * @param {object} state 要更新到store 的state
@@ -17,14 +17,12 @@ export default function createSetStore (Namespace) {
    * }
    * function mapDispatchToProps (dispatch) {
    *   return {
-   *     setStore (state, type) {
-   *       dispatch(setStore(state, type))
-   *     }
+   *       setStore: actionFactory('ABSENCE', dispatch)
    *   }
    * }
    */
-  const setStore = (state, type) => {
-    return type
+  return (state, type) => {
+    let action = type
       ? {
         type: `${type}$${Namespace}`,
         state
@@ -33,7 +31,6 @@ export default function createSetStore (Namespace) {
         type: `Set_STORE$${Namespace}`,
         state
       }
+    dispatch(action)
   }
-
-  return setStore
 }
