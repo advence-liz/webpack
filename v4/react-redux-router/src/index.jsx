@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
+import 'babel-polyfill'
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom'
 import { Layout, Menu, Icon, Switch as SwitchAntd } from 'antd'
 import 'antd/dist/antd.css'
