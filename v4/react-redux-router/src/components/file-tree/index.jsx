@@ -41,23 +41,23 @@ export default class TreeComponent extends React.Component {
         ])
       })
     },
-    onNewDirectory (dataRef) {
-      return new Promise(function (resolve, reject) {
-        setTimeout(resolve, 1000, {
-          type: 'directory',
-          size: '文件大小',
-          path: '',
-          id: guid(),
-          isEmpty: true,
-          updatedAt: '2018-08-09',
-          name: 'new folder',
-          src: '/test/test/测试文件.pdf'
-        })
-      })
-    },
+    // onNewDirectory (dataRef) {
+    //   return new Promise(function (resolve, reject) {
+    //     setTimeout(resolve, 1000, {
+    //       type: 'directory',
+    //       size: '文件大小',
+    //       path: '',
+    //       id: guid(),
+    //       isEmpty: true,
+    //       updatedAt: '2018-08-09',
+    //       name: 'new folder',
+    //       src: '/test/test/测试文件.pdf'
+    //     })
+    //   })
+    // },
     visible: true,
     title: '移动到',
-    searchKey: 'eeer',
+    searchKey: '',
     lists: [
       {
         type: 'directory',
@@ -90,6 +90,20 @@ export default class TreeComponent extends React.Component {
       }
     ]
   }
+  static getDerivedStateFromProps (props, state) {
+    // const newState = { ...state }
+    let { lists, searchKey, title } = props
+
+    if (state.searchKey !== props.searchKey) {
+      state.searchKey = searchKey
+    }
+
+    if (!state.lists.length) {
+      state.lists = lists.map(item => new Node(item))
+    }
+
+    return state
+  }
   state = {
     title: '',
     selectedKeys: [],
@@ -103,7 +117,6 @@ export default class TreeComponent extends React.Component {
     this.state.title = title
     this.state.searchKey = searchKey
     this.state.lists = lists.map(item => new Node(item))
-    console.log(this.state.lists)
   }
   get title () {
     return this.state.title || this.isSave ? '保存到' : '移动到'
@@ -116,7 +129,7 @@ export default class TreeComponent extends React.Component {
   }
   get isSave () {
     const { searchKey, onNewDirectory } = this.props
-    return searchKey || !onNewDirectory
+    return !!searchKey
   }
   onSelect = (selectedKeys, info) => {
     const {
@@ -242,12 +255,13 @@ export default class TreeComponent extends React.Component {
     return (
       <Modal
         title={title}
-        width={485}
+        // width={485}
         footer={null}
         visible={visible}
         onOk={onOk}
         onCancel={onCancel}
         className="q-tree"
+        width={600}
       >
         <Tree
           showLine
@@ -257,37 +271,55 @@ export default class TreeComponent extends React.Component {
         >
           {this.renderTreeNodes(lists)}
         </Tree>
-        <Row type="flex" justify="space-between" style={{ marginTop: 20 }}>
-          {this.isSave ? (
+        {this.isSave ? (
+          <Row type="flex" justify="space-between" style={{ marginTop: 20 }}>
             <Col>
               <label htmlFor="q-file-name">
+                文件名
                 <Input
                   id="q-file-name"
                   onChange={this._onInputChange}
                   value={searchKey}
+                  style={{ width: 200, marginLeft: 20 }}
                 />
               </label>
             </Col>
-          ) : (
             <Col>
-              <Button onClick={this._onNewDirectory} disabled={!this.isFolder}>
-                新建文件夹
+              <Button
+                type="primary"
+                onClick={this._onOk}
+                style={{ marginRight: 30, padding: '0px 35px' }}
+                disabled={!this.isFolder}
+              >
+                确认
+              </Button>
+              <Button onClick={this._onCancel} style={{ padding: '0px 35px' }}>
+                取消
               </Button>
             </Col>
-          )}
-
-          <Col>
-            <Button
-              type="primary"
-              onClick={this._onOk}
-              style={{ marginRight: 30 }}
-              disabled={!this.isFolder}
-            >
-              确认
-            </Button>
-            <Button onCancel={this._onCancel}> 取消</Button>
-          </Col>
-        </Row>
+          </Row>
+        ) : (
+          <Row type="flex" justify="center" style={{ marginTop: 20 }}>
+            <Col>
+              <Button
+                type="primary"
+                onClick={this._onOk}
+                style={{ marginRight: 30, padding: '0px 35px' }}
+                disabled={!this.isFolder}
+              >
+                确认
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                style={{ marginRight: 30, padding: '0px 35px' }}
+                onClick={this._onCancel}
+              >
+                取消
+              </Button>
+            </Col>
+          </Row>
+        )}
       </Modal>
     )
   }
