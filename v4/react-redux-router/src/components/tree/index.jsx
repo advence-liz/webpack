@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tree, Modal, Button, Row, Col, Icon } from 'antd'
+import { Tree, Modal, Button, Row, Col, Icon, Input } from 'antd'
 import { Node, guid } from './model'
 import './style.scss'
 
@@ -8,12 +8,13 @@ const TreeNode = Tree.TreeNode
 
 export default class TreeComponent extends React.Component {
   static defaultProps = {
-    onOk (options) {
+    onOk (dataRef) {
       console.log('ok')
-      console.log(options)
+      console.log(dataRef)
     },
-    onCancel () {
+    onCancel (dataRef) {
       console.log('cancel')
+      console.log(dataRef)
     },
     onLoadData (dataRef) {
       return new Promise(function (resolve, reject) {
@@ -56,6 +57,7 @@ export default class TreeComponent extends React.Component {
     },
     visible: true,
     title: '移动到',
+    searchKey: '',
     lists: [
       {
         type: 'directory',
@@ -89,21 +91,32 @@ export default class TreeComponent extends React.Component {
     ]
   }
   state = {
+    title: '',
     selectedKeys: [],
     lists: [],
-    dataRef: {} // 当前选中treeNode
+    dataRef: {}, // 当前选中treeNode
+    searchKey: ''
   }
   constructor (props) {
     super(props)
-    let { lists } = props
+    let { lists, searchKey, title } = props
+    this.state.title = title
+    this.state.searchKey = searchKey
     this.state.lists = lists.map(item => new Node(item))
     console.log(this.state.lists)
+  }
+  get title () {
+    return this.state.title || this.isSave ? '保存到' : '移动到'
   }
   get isFolder () {
     const {
       dataRef: { type }
     } = this.state
     return type === 'directory'
+  }
+  get isSave () {
+    const { searchKey, onNewDirectory } = this.props
+    return searchKey || !onNewDirectory
   }
   onSelect = (selectedKeys, info) => {
     const {
@@ -163,6 +176,12 @@ export default class TreeComponent extends React.Component {
     const { onCancel } = this.props
     onCancel(dataRef)
   }
+  _onInputChange = event => {
+    const {
+      target: { value }
+    } = event
+    this.setState({ searchKey: value })
+  }
   renderTreeNode (node) {
     let { type, name, id, isEmpty } = node
     if (type === 'directory') {
@@ -219,7 +238,7 @@ export default class TreeComponent extends React.Component {
 
   render () {
     const { visible, onCancel, onOk, title } = this.props
-    const { lists } = this.state
+    const { lists, searchKey } = this.state
     return (
       <Modal
         title={title}
@@ -239,20 +258,34 @@ export default class TreeComponent extends React.Component {
           {this.renderTreeNodes(lists)}
         </Tree>
         <Row type="flex" justify="space-between" style={{ marginTop: 20 }}>
-          <Col>
-            <Button onClick={this._onNewDirectory} disabled={!this.isFolder}>
-              新建文件夹
-            </Button>
-          </Col>
+          {this.isSave ? (
+            <Col>
+              <label htmlFor="q-file-name">
+                <Input
+                  id="q-file-name"
+                  onChange={this._onInputChange}
+                  value={searchKey}
+                />
+              </label>
+            </Col>
+          ) : (
+            <Col>
+              <Button onClick={this._onNewDirectory} disabled={!this.isFolder}>
+                新建文件夹
+              </Button>
+            </Col>
+          )}
+
           <Col>
             <Button
               type="primary"
+              onClick={this._onOk}
               style={{ marginRight: 30 }}
               disabled={!this.isFolder}
             >
               确认
             </Button>
-            <Button> 取消</Button>
+            <Button onCancel={this._onCancel}> 取消</Button>
           </Col>
         </Row>
       </Modal>
