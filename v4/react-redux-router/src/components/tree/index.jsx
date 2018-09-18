@@ -1,16 +1,11 @@
 import React from 'react'
 import { Tree, Modal, Button, Row, Col, Icon } from 'antd'
+import { Node, guid } from './model'
+import './style.scss'
 
 // const DirectoryTree = Tree.DirectoryTree
 const TreeNode = Tree.TreeNode
-function guid () {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    var r = (Math.random() * 16) | 0
 
-    var v = c == 'x' ? r : (r & 0x3) | 0x8
-    return v.toString(16)
-  })
-}
 export default class TreeComponent extends React.Component {
   static defaultProps = {
     onOk (options) {
@@ -52,8 +47,9 @@ export default class TreeComponent extends React.Component {
           size: '文件大小',
           path: '',
           id: guid(),
+          isEmpty: true,
           updatedAt: '2018-08-09',
-          name: '测试文件.pdf',
+          name: 'new folder',
           src: '/test/test/测试文件.pdf'
         })
       })
@@ -95,14 +91,20 @@ export default class TreeComponent extends React.Component {
   state = {
     selectedKeys: [],
     lists: [],
-    dataRef: {}
+    dataRef: {} // 当前选中treeNode
   }
   constructor (props) {
     super(props)
     let { lists } = props
-    this.state.lists = lists
+    this.state.lists = lists.map(item => new Node(item))
+    console.log(this.state.lists)
   }
-
+  get isFolder () {
+    const {
+      dataRef: { type }
+    } = this.state
+    return type === 'directory'
+  }
   onSelect = (selectedKeys, info) => {
     const {
       node: {
@@ -115,40 +117,60 @@ export default class TreeComponent extends React.Component {
   _onLoadData = async treeNode => {
     const { onLoadData } = this.props
     const { dataRef } = treeNode.props
-    const { isEmpty } = dataRef
+    const { isEmpty, children } = dataRef
 
     return new Promise(async (resolve, reject) => {
-      if (isEmpty) {
+      if (isEmpty || children.length) {
         resolve()
         return
       }
       const childrenLists = await onLoadData(dataRef)
-
-      if (childrenLists.length) {
-        dataRef.children = childrenLists
-      }
-
-      // this.setState({ lists: [...this.state.lists] })
-      this.forceUpdate()
+      dataRef.children = childrenLists.map(item => new Node(item))
+      this.setState({ lists: [...this.state.lists] })
+      // this.forceUpdate()
       resolve()
     })
   }
   _onNewDirectory = async () => {
     const { dataRef } = this.state
     const { onNewDirectory } = this.props
+    const { children } = dataRef
+    if (!this.isFolder) return
     return new Promise(async (resolve, reject) => {
       const node = await onNewDirectory(dataRef)
-      dataRef.children.push(node)
-      this.setState({})
+      /**
+       * 0 能进入此处逻辑的一定是目录,当isEmpty 为true 不会有异步加载按钮
+       * 1 当前目录children.length > 0即代表已经加载过数据直接在 children 中添加新创建的节点
+       * 2 当前目录chidren.length ===0 时,将 isEmpty 设置为false 触发异步加载
+       */
+      if (children.length) {
+        dataRef.children.push(new Node(node))
+        dataRef.isEmpty = false
+      } else {
+        dataRef.isEmpty = false
+      }
+      this.setState({ lists: [...this.state.lists] })
       resolve()
     })
+  }
+  _onOk = () => {
+    const { dataRef } = this.state
+    const { onOk } = this.props
+    onOk(dataRef)
+  }
+  _onCancel = () => {
+    const { dataRef } = this.state
+    const { onCancel } = this.props
+    onCancel(dataRef)
   }
   renderTreeNode (node) {
     let { type, name, id, isEmpty } = node
     if (type === 'directory') {
       return (
         <TreeNode
-          icon={<Icon type="folder" theme="outlined" />}
+          icon={
+            <Icon style={{ color: '#FFCD2E' }} type="folder" theme="two-one" />
+          }
           title={name}
           key={id}
           dataRef={node}
@@ -158,7 +180,9 @@ export default class TreeComponent extends React.Component {
     } else {
       return (
         <TreeNode
-          icon={<Icon type="file" theme="outlined" />}
+          icon={
+            <Icon style={{ color: '#FFCD2E' }} type="file" theme="filled" />
+          }
           title={name}
           key={id}
           dataRef={node}
@@ -170,9 +194,21 @@ export default class TreeComponent extends React.Component {
   renderTreeNodes = lists => {
     return lists.map((node, index) => {
       let { isEmpty, children, name, id } = node
-      if (!isEmpty && children) {
+      if (!isEmpty && children.length) {
         return (
-          <TreeNode title={name} key={id} dataRef={node} isLeaf={false}>
+          <TreeNode
+            icon={
+              <Icon
+                style={{ color: '#FFCD2E' }}
+                type="folder"
+                theme="two-one"
+              />
+            }
+            title={name}
+            key={id}
+            dataRef={node}
+            isLeaf={false}
+          >
             {this.renderTreeNodes(children)}
           </TreeNode>
         )
@@ -183,7 +219,7 @@ export default class TreeComponent extends React.Component {
 
   render () {
     const { visible, onCancel, onOk, title } = this.props
-    const { selectedKeys, lists } = this.state
+    const { lists } = this.state
     return (
       <Modal
         title={title}
@@ -192,19 +228,32 @@ export default class TreeComponent extends React.Component {
         visible={visible}
         onOk={onOk}
         onCancel={onCancel}
+        className="q-tree"
       >
         <Tree
-          // showLine
+          showLine
           showIcon
           loadData={this._onLoadData}
           onSelect={this.onSelect}
         >
           {this.renderTreeNodes(lists)}
         </Tree>
-        <Row>
-          <Button onClick={this._onNewDirectory}>新建文件夹</Button>{' '}
-          <Button type="primary">确认</Button>
-          <Button> 取消</Button>
+        <Row type="flex" justify="space-between" style={{ marginTop: 20 }}>
+          <Col>
+            <Button onClick={this._onNewDirectory} disabled={!this.isFolder}>
+              新建文件夹
+            </Button>
+          </Col>
+          <Col>
+            <Button
+              type="primary"
+              style={{ marginRight: 30 }}
+              disabled={!this.isFolder}
+            >
+              确认
+            </Button>
+            <Button> 取消</Button>
+          </Col>
         </Row>
       </Modal>
     )

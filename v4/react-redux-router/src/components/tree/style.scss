@@ -1,0 +1,10 @@
+.q-tree {
+  .ant-tree.ant-tree-show-line li:not(:last-child):before {
+    border-left: 1px solid #fff;
+  }
+  .ant-tree.ant-tree-show-line
+    li
+    span.ant-tree-switcher.ant-tree-switcher-noop:after {
+    visibility: hidden;
+  }
+}
