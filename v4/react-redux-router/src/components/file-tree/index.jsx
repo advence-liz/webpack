@@ -57,7 +57,7 @@ export default class TreeComponent extends React.Component {
     },
     visible: true,
     title: '移动到',
-    searchKey: '',
+    searchKey: 'eeer',
     lists: [
       {
         type: 'directory',
@@ -137,7 +137,7 @@ export default class TreeComponent extends React.Component {
         resolve()
         return
       }
-      const childrenLists = await onLoadData(dataRef)
+      const childrenLists = await onLoadData(dataRef, this.state)
       dataRef.children = childrenLists.map(item => new Node(item))
       this.setState({ lists: [...this.state.lists] })
       // this.forceUpdate()
@@ -150,7 +150,7 @@ export default class TreeComponent extends React.Component {
     const { children } = dataRef
     if (!this.isFolder) return
     return new Promise(async (resolve, reject) => {
-      const node = await onNewDirectory(dataRef)
+      const node = await onNewDirectory(dataRef, this.state)
       /**
        * 0 能进入此处逻辑的一定是目录,当isEmpty 为true 不会有异步加载按钮
        * 1 当前目录children.length > 0即代表已经加载过数据直接在 children 中添加新创建的节点

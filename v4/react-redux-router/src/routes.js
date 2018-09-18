@@ -1,8 +1,8 @@
 import Absence from 'pages/absence'
 import Home from 'home'
 import TimeCreate from 'time-create'
-import Upload from 'upload'
-import Tree from 'tree'
+import Upload from 'file-upload'
+import Tree from 'file-tree'
 import Tree1 from 'tree-1'
 
 const Routers = []
