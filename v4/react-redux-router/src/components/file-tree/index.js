@@ -16,6 +16,7 @@ export default class TreeComponent extends React.Component {
       console.log('cancel')
       console.log(dataRef)
     },
+    onInputChange (event) {},
     onLoadData (dataRef) {
       return new Promise(function (resolve, reject) {
         setTimeout(resolve, 1000, [
@@ -57,7 +58,7 @@ export default class TreeComponent extends React.Component {
     // },
     visible: true,
     title: '移动到',
-    searchKey: '',
+    searchKey: 's',
     lists: [
       {
         type: 'directory',
@@ -91,33 +92,33 @@ export default class TreeComponent extends React.Component {
     ]
   }
   static getDerivedStateFromProps (props, state) {
-    // const newState = { ...state }
-    let { lists, searchKey, title } = props
-
-    if (state.searchKey !== props.searchKey) {
-      state.searchKey = searchKey
-    }
-
-    if (!state.lists.length) {
-      state.lists = lists.map(item => new Node(item))
-    }
-
-    return state
+    const prevProps = state.prevProps
+    // Compare the incoming prop to previous prop
+    state.lists =
+      prevProps.lists !== props.lists
+        ? props.lists.map(item => new Node(item))
+        : state.lists.map(item => new Node(item))
+    state.searchKey =
+      prevProps.searchKey !== props.searchKey
+        ? props.searchKey
+        : state.searchKey
+    state.prevProps = props
+    return null
   }
   state = {
-    title: '',
+    prevProps: {},
     selectedKeys: [],
     lists: [],
-    dataRef: {}, // 当前选中treeNode
-    searchKey: ''
+    dataRef: {} // 当前选中treeNode
   }
-  constructor (props) {
-    super(props)
-    let { lists, searchKey, title } = props
-    this.state.title = title
-    this.state.searchKey = searchKey
-    this.state.lists = lists.map(item => new Node(item))
-  }
+  // constructor (props) {
+  //   super(props)
+
+  //   // let { lists, searchKey, title } = props
+
+  //   // this.state.searchKey = searchKey
+  //   // this.state.lists = lists.map(item => new Node(item))
+  // }
   get title () {
     return this.state.title || this.isSave ? '保存到' : '移动到'
   }
@@ -187,7 +188,11 @@ export default class TreeComponent extends React.Component {
   _onCancel = () => {
     const { dataRef } = this.state
     const { onCancel } = this.props
+
     onCancel(dataRef)
+
+    // this.state.lists.length = 0
+    // this.setState({ searchKey: '', lists: [] })
   }
   _onInputChange = event => {
     const {
