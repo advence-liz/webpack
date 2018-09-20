@@ -31,7 +31,7 @@ export default class Home extends React.Component {
         type: 'directory',
         size: '文件大小',
         path: '',
-        id: guid(),
+        id: '1',
         isEmpty: false,
         updatedAt: '2018-08-09',
         name: 'folder',
@@ -40,7 +40,7 @@ export default class Home extends React.Component {
       {
         type: 'file',
         path: '早教视频',
-        id: guid(),
+        id: '2',
         isEmpty: true,
         size: '文件大小',
         name: '早教视频',

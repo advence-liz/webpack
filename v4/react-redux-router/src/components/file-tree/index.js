@@ -8,13 +8,13 @@ const TreeNode = Tree.TreeNode
 
 export default class TreeComponent extends React.Component {
   static defaultProps = {
-    onOk (dataRef) {
+    onOk (dataRef, state) {
       console.log('ok')
-      console.log(dataRef)
+      console.log(dataRef, state)
     },
-    onCancel (dataRef) {
+    onCancel (dataRef, state) {
       console.log('cancel')
-      console.log(dataRef)
+      console.log(dataRef, state)
     },
     onInputChange (event) {},
     onLoadData (dataRef) {
@@ -24,7 +24,7 @@ export default class TreeComponent extends React.Component {
             type: 'directory',
             size: '文件大小',
             path: '',
-            id: guid(),
+            id: '1',
             isEmpty: false,
             updatedAt: '2018-08-09',
             name: 'folder',
@@ -33,7 +33,7 @@ export default class TreeComponent extends React.Component {
           {
             type: 'file',
             path: '早教视频',
-            id: guid(),
+            id: '2',
             isEmpty: true,
             size: '文件大小',
             name: '早教视频',
@@ -58,7 +58,7 @@ export default class TreeComponent extends React.Component {
     // },
     visible: true,
     title: '移动到',
-    searchKey: 's',
+    searchKey: '',
     lists: [
       {
         type: 'directory',
@@ -74,7 +74,7 @@ export default class TreeComponent extends React.Component {
         type: 'directory',
         size: '文件大小',
         path: '',
-        id: guid(),
+        id: 3,
         isEmpty: true,
         updatedAt: '2018-08-09',
         name: 'folder1',
@@ -83,7 +83,7 @@ export default class TreeComponent extends React.Component {
       {
         type: 'file',
         path: '早教视频',
-        id: guid(),
+        id: 4,
         isEmpty: true,
         size: '文件大小',
         name: '早教视频',
@@ -98,17 +98,12 @@ export default class TreeComponent extends React.Component {
     if (prevProps.lists !== props.lists) {
       state.lists = props.lists.map(item => new Node(item))
       state.prevProps = props
-    } else {
-      // state.lists = state.lists.map(item => new Node(item))
     }
 
     if (prevProps.searchKey !== props.searchKey) {
       state.searchKey = props.searchKey
       state.prevProps = props
-    } else {
-      // state.searchKey = state.searchKey
     }
-
     return state
   }
   state = {
@@ -117,14 +112,7 @@ export default class TreeComponent extends React.Component {
     lists: [],
     dataRef: {} // 当前选中treeNode
   }
-  // constructor (props) {
-  //   super(props)
 
-  //   // let { lists, searchKey, title } = props
-
-  //   // this.state.searchKey = searchKey
-  //   // this.state.lists = lists.map(item => new Node(item))
-  // }
   get title () {
     return this.state.title || this.isSave ? '保存到' : '移动到'
   }
@@ -189,16 +177,13 @@ export default class TreeComponent extends React.Component {
   _onOk = () => {
     const { dataRef } = this.state
     const { onOk } = this.props
-    onOk(dataRef)
+    onOk(dataRef, this.state)
   }
   _onCancel = () => {
     const { dataRef } = this.state
     const { onCancel } = this.props
 
-    onCancel(dataRef)
-
-    // this.state.lists.length = 0
-    // this.setState({ searchKey: '', lists: [] })
+    onCancel(dataRef, this.state)
   }
   _onInputChange = event => {
     const {
@@ -207,7 +192,7 @@ export default class TreeComponent extends React.Component {
     this.setState({ searchKey: value })
   }
   renderTreeNode (node) {
-    let { type, name, id, isEmpty } = node
+    let { type, name, uuid, isEmpty } = node
     if (type === 'directory') {
       return (
         <TreeNode
@@ -215,7 +200,7 @@ export default class TreeComponent extends React.Component {
             <Icon style={{ color: '#FFCD2E' }} type="folder" theme="two-one" />
           }
           title={name}
-          key={id}
+          key={uuid}
           dataRef={node}
           isLeaf={isEmpty}
         />
@@ -227,7 +212,7 @@ export default class TreeComponent extends React.Component {
             <Icon style={{ color: '#FFCD2E' }} type="file" theme="filled" />
           }
           title={name}
-          key={id}
+          key={uuid}
           dataRef={node}
           isLeaf={true}
         />
@@ -236,7 +221,7 @@ export default class TreeComponent extends React.Component {
   }
   renderTreeNodes = lists => {
     return lists.map((node, index) => {
-      let { isEmpty, children, name, id } = node
+      let { isEmpty, children, name, uuid } = node
       if (!isEmpty && children.length) {
         return (
           <TreeNode
@@ -248,7 +233,7 @@ export default class TreeComponent extends React.Component {
               />
             }
             title={name}
-            key={id}
+            key={uuid}
             dataRef={node}
             isLeaf={false}
           >
@@ -269,7 +254,7 @@ export default class TreeComponent extends React.Component {
         // width={485}
         footer={null}
         visible={visible}
-        onOk={onOk}
+        // onOk={onOk}
         onCancel={onCancel}
         className="q-tree"
         width={600}

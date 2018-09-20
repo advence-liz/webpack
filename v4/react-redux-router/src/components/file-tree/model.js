@@ -1,4 +1,5 @@
 export class Node {
+  uuid = guid()
   constructor (options) {
     const defaultOptions = { children: [] }
 
