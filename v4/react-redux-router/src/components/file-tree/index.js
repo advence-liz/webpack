@@ -94,16 +94,22 @@ export default class TreeComponent extends React.Component {
   static getDerivedStateFromProps (props, state) {
     const prevProps = state.prevProps
     // Compare the incoming prop to previous prop
-    state.lists =
-      prevProps.lists !== props.lists
-        ? props.lists.map(item => new Node(item))
-        : state.lists.map(item => new Node(item))
-    state.searchKey =
-      prevProps.searchKey !== props.searchKey
-        ? props.searchKey
-        : state.searchKey
-    state.prevProps = props
-    return null
+
+    if (prevProps.lists !== props.lists) {
+      state.lists = props.lists.map(item => new Node(item))
+      state.prevProps = props
+    } else {
+      // state.lists = state.lists.map(item => new Node(item))
+    }
+
+    if (prevProps.searchKey !== props.searchKey) {
+      state.searchKey = props.searchKey
+      state.prevProps = props
+    } else {
+      // state.searchKey = state.searchKey
+    }
+
+    return state
   }
   state = {
     prevProps: {},

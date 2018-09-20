@@ -1,6 +1,14 @@
 import React from 'react'
 
 import FileTree from '../file-tree'
+function guid () {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = (Math.random() * 16) | 0
+
+    var v = c === 'x' ? r : (r & 0x3) | 0x8
+    return v.toString(16)
+  })
+}
 
 export default class Home extends React.Component {
   static defaultProps = {
@@ -23,7 +31,7 @@ export default class Home extends React.Component {
         type: 'directory',
         size: '文件大小',
         path: '',
-        id: '121212',
+        id: guid(),
         isEmpty: false,
         updatedAt: '2018-08-09',
         name: 'folder',
@@ -32,7 +40,7 @@ export default class Home extends React.Component {
       {
         type: 'file',
         path: '早教视频',
-        id: '1212',
+        id: guid(),
         isEmpty: true,
         size: '文件大小',
         name: '早教视频',
@@ -53,7 +61,7 @@ export default class Home extends React.Component {
           type: 'directory',
           size: '文件大小',
           path: '',
-          id: '212',
+          id: guid(),
           isEmpty: false,
           updatedAt: '2018-08-09',
           name: 'folder',
