@@ -1,6 +1,7 @@
 import React from 'react'
 import { Tree, Modal, Button, Row, Col, Icon, Input } from 'antd'
 import { Node, guid } from './model'
+import FileIcon from 'file-icon'
 import './style.scss'
 
 // const DirectoryTree = Tree.DirectoryTree
@@ -23,6 +24,7 @@ export default class TreeComponent extends React.Component {
           {
             type: 'directory',
             size: '文件大小',
+            fileType: 'folder',
             path: '',
             id: '1',
             isEmpty: false,
@@ -32,6 +34,7 @@ export default class TreeComponent extends React.Component {
           },
           {
             type: 'file',
+            fileType: 'file',
             path: '早教视频',
             id: '2',
             isEmpty: true,
@@ -62,6 +65,7 @@ export default class TreeComponent extends React.Component {
     lists: [
       {
         type: 'directory',
+        fileType: 'folder',
         size: '文件大小',
         path: '',
         id: guid(),
@@ -72,6 +76,7 @@ export default class TreeComponent extends React.Component {
       },
       {
         type: 'directory',
+        fileType: 'folder',
         size: '文件大小',
         path: '',
         id: 3,
@@ -82,6 +87,7 @@ export default class TreeComponent extends React.Component {
       },
       {
         type: 'file',
+        fileType: 'file',
         path: '早教视频',
         id: 4,
         isEmpty: true,
@@ -138,10 +144,10 @@ export default class TreeComponent extends React.Component {
   _onLoadData = async treeNode => {
     const { onLoadData } = this.props
     const { dataRef } = treeNode.props
-    const { isEmpty, children } = dataRef
+    const { isEmpty, children, root } = dataRef
 
     return new Promise(async (resolve, reject) => {
-      if (isEmpty || children.length) {
+      if (isEmpty || root || children.length) {
         resolve()
         return
       }
@@ -192,13 +198,11 @@ export default class TreeComponent extends React.Component {
     this.setState({ searchKey: value })
   }
   renderTreeNode (node) {
-    let { type, name, uuid, isEmpty } = node
+    let { type, name, uuid, isEmpty, fileType } = node
     if (type === 'directory') {
       return (
         <TreeNode
-          icon={
-            <Icon style={{ color: '#FFCD2E' }} type="folder" theme="two-one" />
-          }
+          icon={<FileIcon type={fileType} />}
           title={name}
           key={uuid}
           dataRef={node}
@@ -208,9 +212,7 @@ export default class TreeComponent extends React.Component {
     } else {
       return (
         <TreeNode
-          icon={
-            <Icon style={{ color: '#FFCD2E' }} type="file" theme="filled" />
-          }
+          icon={<FileIcon type={fileType} />}
           title={name}
           key={uuid}
           dataRef={node}
@@ -225,13 +227,10 @@ export default class TreeComponent extends React.Component {
       if (!isEmpty && children.length) {
         return (
           <TreeNode
-            icon={
-              <Icon
-                style={{ color: '#FFCD2E' }}
-                type="folder"
-                theme="two-one"
-              />
-            }
+            // icon={
+            //   <Icon style={{ color: '#FFCD2E' }} type="folder" theme="filled" />
+            // }
+            icon={<FileIcon type="folder" />}
             title={name}
             key={uuid}
             dataRef={node}
@@ -265,7 +264,15 @@ export default class TreeComponent extends React.Component {
           loadData={this._onLoadData}
           onSelect={this.onSelect}
         >
-          {this.renderTreeNodes(lists)}
+          <TreeNode
+            icon={<FileIcon type="folder" />}
+            title={`全部文件`}
+            key={`1024`}
+            dataRef={{ root: true }}
+            isLeaf={false}
+          >
+            {this.renderTreeNodes(lists)}
+          </TreeNode>
         </Tree>
         {this.isSave ? (
           <Row type="flex" justify="space-between" style={{ marginTop: 20 }}>

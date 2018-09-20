@@ -24,7 +24,7 @@ export default class Home extends React.Component {
     }
   }
   state = {
-    searchKey: 'eeee',
+    searchKey: '',
     visible: true,
     lists: [
       {

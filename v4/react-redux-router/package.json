@@ -44,6 +44,7 @@
   "dependencies": {
     "antd": "^3.8.1",
     "connected-react-router": "^4.4.1",
+    "copy-webpack-plugin": "^4.5.2",
     "history": "^4.7.2",
     "immutable": "^3.7.4",
     "moment": "^2.22.2",

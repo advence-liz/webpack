@@ -1,0 +1,38 @@
+.file-icon-box {
+  .file-icon {
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+
+    &.icon--ppt {
+      background-image: url(/image/file-icon/icon-ppt.png);
+    }
+    &.icon--folder {
+      background-image: url(/image/file-icon/icon-folder.png);
+    }
+    &.icon--pdf {
+      background-image: url(/image/file-icon/icon-pdf.svg);
+    }
+    &.icon--xls {
+      background-image: url(/image/file-icon/icon-excel.svg);
+    }
+    &.icon--doc {
+      background-image: url(/image/file-icon/icon-doc.svg);
+    }
+    &.icon--txt {
+      background-image: url(/image/file-icon/icon-text.svg);
+    }
+    &.icon--image {
+      background-image: url(/image/file-icon/icon-image.svg);
+    }
+    &.icon--video {
+      background-image: url(/image/file-icon/icon-video.svg);
+    }
+    &.icon--default {
+      background-image: url(/image/file-icon/icon-default.svg);
+    }
+  }
+}

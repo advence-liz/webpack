@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
   entry: './src/',
   mode: 'development',
@@ -79,7 +80,8 @@ module.exports = {
       favicon: 'template/favicon.ico',
       // inject: false,
       title: 'webpack'
-    })
+    }),
+    new CopyWebpackPlugin([{ from: 'image/**/*' }])
     // new webpack.DefinePlugin({
     //   PRODUCTION: true,
     //   VERSION: JSON.stringify('5fa3b9'),
