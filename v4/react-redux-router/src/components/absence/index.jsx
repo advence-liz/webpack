@@ -3,43 +3,46 @@ import { Modal, Row, Col } from 'antd'
 import ReasonGroup from './reason-group'
 import ParentValidation from './parent-validation'
 import PropTypes from 'prop-types'
+
 export default class Absence extends React.Component {
   static defaultProps = {
     options: {
       time_from: '2018-09-10 10:00:00',
       course: {
-        title: '朗文试听课-我的宠物'
+        name: '朗文试听课-我的宠物'
       }
     },
     visible: true,
-    onCancel () {
+    onCancel() {
       console.log('cancle')
     },
-    onOK (...rest) {
+    onOK(...rest) {
       console.log(rest)
     }
   }
   state = { isPass: false, reason: '', isInit: true }
-  onReasonChange = reason => {
+  onReasonChange = (reason) => {
     this.setState({ reason })
   }
-  onValidationChange = isPass => {
+  onValidationChange = (isPass) => {
     this.setState({ isPass, isInit: false })
   }
   onOKClick = () => {
-    let { isPass, isInit } = this.state
-    let { options, onOK } = this.props
+    const { isPass, isInit } = this.state
+    const { options, onOK } = this.props
     isInit && this.setState({ isInit: false })
     if (!isPass) {
       return
     }
     onOK(this.state, options)
   }
-  render () {
+  render() {
     const { options } = this.props
     const { time_from: absenceTime, course } = options
-    const { title: asbenceCourse } = course || {}
+
+    const { name: asbenceCourse } = course || {}
     const titleStyle = { color: '#999' }
+
     return (
       <div>
         <Modal

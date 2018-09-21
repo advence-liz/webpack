@@ -1,7 +1,7 @@
 import React from 'react'
 import { Tree, Modal, Button, Row, Col, Icon, Input } from 'antd'
 import { Node, guid } from './model'
-import FileIcon from 'file-icon'
+import FileIcon from 'components/file-icon'
 import './style.scss'
 
 // const DirectoryTree = Tree.DirectoryTree
@@ -19,7 +19,7 @@ export default class TreeComponent extends React.Component {
     },
     onInputChange (event) {},
     onLoadData (dataRef) {
-      return new Promise(function (resolve, reject) {
+      return new Promise((resolve, reject) => {
         setTimeout(resolve, 1000, [
           {
             type: 'directory',
@@ -198,7 +198,7 @@ export default class TreeComponent extends React.Component {
     this.setState({ searchKey: value })
   }
   renderTreeNode (node) {
-    let { type, name, uuid, isEmpty, fileType } = node
+    const { type, name, uuid, isEmpty, fileType } = node
     if (type === 'directory') {
       return (
         <TreeNode
@@ -209,21 +209,20 @@ export default class TreeComponent extends React.Component {
           isLeaf={isEmpty}
         />
       )
-    } else {
-      return (
-        <TreeNode
-          icon={<FileIcon type={fileType} />}
-          title={name}
-          key={uuid}
-          dataRef={node}
-          isLeaf={true}
-        />
-      )
     }
+    return (
+      <TreeNode
+        icon={<FileIcon type={fileType} />}
+        title={name}
+        key={uuid}
+        dataRef={node}
+        isLeaf={true}
+      />
+    )
   }
-  renderTreeNodes = lists => {
-    return lists.map((node, index) => {
-      let { isEmpty, children, name, uuid } = node
+  renderTreeNodes = lists =>
+    lists.map((node, index) => {
+      const { isEmpty, children, name, uuid } = node
       if (!isEmpty && children.length) {
         return (
           <TreeNode
@@ -242,7 +241,6 @@ export default class TreeComponent extends React.Component {
       }
       return this.renderTreeNode(node)
     })
-  }
 
   render () {
     const { visible, onCancel, onOk, title } = this.props
@@ -264,15 +262,15 @@ export default class TreeComponent extends React.Component {
           loadData={this._onLoadData}
           onSelect={this.onSelect}
         >
-          {/* <TreeNode
+          <TreeNode
             icon={<FileIcon type="folder" />}
-            title={`全部文件`}
-            key={`1024`}
-            dataRef={{ root: true }}
+            title={'全部文件'}
+            key={'1024'}
+            dataRef={{ root: true, type: 'directory' }}
             isLeaf={false}
-          > */}
-          {this.renderTreeNodes(lists)}
-          {/* </TreeNode> */}
+          >
+            {this.renderTreeNodes(lists)}
+          </TreeNode>
         </Tree>
         {this.isSave ? (
           <Row type="flex" justify="space-between" style={{ marginTop: 20 }}>
@@ -302,7 +300,7 @@ export default class TreeComponent extends React.Component {
             </Col>
           </Row>
         ) : (
-          <Row type="flex" justify="center" style={{ marginTop: 20 }}>
+          <Row type="flex" justify="end" style={{ marginTop: 20 }}>
             <Col>
               <Button
                 type="primary"
@@ -315,7 +313,7 @@ export default class TreeComponent extends React.Component {
             </Col>
             <Col>
               <Button
-                style={{ marginRight: 30, padding: '0px 35px' }}
+                style={{ marginRight: 0, padding: '0px 35px' }}
                 onClick={this._onCancel}
               >
                 取消
