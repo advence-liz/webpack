@@ -264,15 +264,15 @@ export default class TreeComponent extends React.Component {
           loadData={this._onLoadData}
           onSelect={this.onSelect}
         >
-          <TreeNode
+          {/* <TreeNode
             icon={<FileIcon type="folder" />}
             title={`全部文件`}
             key={`1024`}
             dataRef={{ root: true }}
             isLeaf={false}
-          >
-            {this.renderTreeNodes(lists)}
-          </TreeNode>
+          > */}
+          {this.renderTreeNodes(lists)}
+          {/* </TreeNode> */}
         </Tree>
         {this.isSave ? (
           <Row type="flex" justify="space-between" style={{ marginTop: 20 }}>

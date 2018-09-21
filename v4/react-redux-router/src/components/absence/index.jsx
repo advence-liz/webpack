@@ -39,6 +39,7 @@ export default class Absence extends React.Component {
     const { options } = this.props
     const { time_from: absenceTime, course } = options
     const { title: asbenceCourse } = course || {}
+    const titleStyle = { color: '#999' }
     return (
       <div>
         <Modal
@@ -46,25 +47,33 @@ export default class Absence extends React.Component {
           visible={this.props.visible}
           onOk={this.onOKClick}
           onCancel={this.props.onCancel}
-          okText="确认"
+          okText="提交审核"
           cancelText="取消"
         >
-          <Row>
-            <Col span={6}>请假时间</Col>
+          <Row style={{ marginBottom: 5 }}>
+            <Col span={6} style={titleStyle}>
+              请假时间
+            </Col>
             <Col span={10}>{absenceTime}</Col>
           </Row>
-          <Row>
-            <Col span={6}>请假课程</Col>
+          <Row style={{ marginBottom: 5 }}>
+            <Col span={6} style={titleStyle}>
+              请假课程
+            </Col>
             <Col span={10}>{asbenceCourse}</Col>
           </Row>
           <Row>
-            <Col span={6}>请假原因</Col>
-            <Col span={10}>
+            <Col span={6} style={titleStyle}>
+              请假原因
+            </Col>
+            <Col span={12}>
               <ReasonGroup onReasonChange={this.onReasonChange} />
             </Col>
           </Row>
           <Row style={{ marginTop: 20 }}>
-            <Col span={6}>家长验证</Col>
+            <Col span={6} style={titleStyle}>
+              家长验证
+            </Col>
             <Col span={18}>
               <ParentValidation
                 isInit={this.state.isInit}

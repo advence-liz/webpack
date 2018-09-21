@@ -23,6 +23,24 @@ module.exports = {
         ]
       },
       {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              modifyVars: {
+                'primary-color': '#00C697',
+                'border-radius-base': '2px'
+              },
+              javascriptEnabled: true
+            }
+          }
+        ],
+        include: /node_modules/
+      },
+      {
         test: /\.tsx?$/,
         use: [
           {
