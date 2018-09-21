@@ -34,7 +34,7 @@ export default class TreeComponent extends React.Component {
           },
           {
             type: 'file',
-            fileType: 'file',
+            fileType: 'mp4',
             path: '早教视频',
             id: '2',
             isEmpty: true,
