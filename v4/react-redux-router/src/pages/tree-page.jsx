@@ -27,27 +27,17 @@ export default class Home extends React.Component {
     searchKey: '',
     visible: true,
     lists: [
-      {
-        type: 'directory',
-        size: '文件大小',
-        path: '',
-        id: '1',
-        isEmpty: false,
-        fileType: 'folder',
-        updatedAt: '2018-08-09',
-        name: 'folder',
-        src: '/test/test/测试文件.pdf'
-      },
-      {
-        type: 'file',
-        path: '早教视频',
-        id: '2',
-        isEmpty: true,
-        fileType: 'mp4',
-        size: '文件大小',
-        name: '早教视频',
-        updatedAt: '2018-08-09'
-      }
+      //   {
+      //   type: 'file',
+      //   size: '文件大小',
+      //   fileType: 'file',
+      //   path: '',
+      //   id: '1',
+      //   isEmpty: false,
+      //   updatedAt: '2018-08-09',
+      //   name: 'folder',
+      //   src: '/test/test/测试文件.pdf'
+      // }
     ]
   }
   click = () => {
@@ -67,8 +57,8 @@ export default class Home extends React.Component {
           isEmpty: false,
           updatedAt: '2018-08-09',
           name: 'folder',
-          fileType: 'pdf',
-          src: '/test/test/测试文件.pdf'
+          fileType: 'folder',
+          src: 'folder'
         }
       ]
     })

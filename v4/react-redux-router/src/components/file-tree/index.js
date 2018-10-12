@@ -24,23 +24,24 @@ export default class TreeComponent extends React.Component {
           {
             type: 'directory',
             size: '文件大小',
+            path: '',
+            id: guid(),
+            isEmpty: false,
+            updatedAt: '2018-08-09',
+            name: 'folder',
             fileType: 'folder',
+            src: 'folder'
+          },
+          {
+            type: 'pdf',
+            size: '文件大小',
+            fileType: 'pdf',
             path: '',
             id: '1',
             isEmpty: false,
             updatedAt: '2018-08-09',
             name: 'folder',
             src: '/test/test/测试文件.pdf'
-          },
-          {
-            type: 'file',
-            fileType: 'mp4',
-            path: '早教视频',
-            id: '2',
-            isEmpty: true,
-            size: '文件大小',
-            name: '早教视频',
-            updatedAt: '2018-08-09'
           }
         ])
       })
@@ -62,40 +63,7 @@ export default class TreeComponent extends React.Component {
     visible: true,
     title: '移动到',
     searchKey: '',
-    lists: [
-      {
-        type: 'directory',
-        fileType: 'folder',
-        size: '文件大小',
-        path: '',
-        id: guid(),
-        isEmpty: false,
-        updatedAt: '2018-08-09',
-        name: 'folder',
-        src: '/test/test/测试文件.pdf'
-      },
-      {
-        type: 'directory',
-        fileType: 'folder',
-        size: '文件大小',
-        path: '',
-        id: 3,
-        isEmpty: true,
-        updatedAt: '2018-08-09',
-        name: 'folder1',
-        src: '/test/test/测试文件.pdf'
-      },
-      {
-        type: 'file',
-        fileType: 'file',
-        path: '早教视频',
-        id: 4,
-        isEmpty: true,
-        size: '文件大小',
-        name: '早教视频',
-        updatedAt: '2018-08-09'
-      }
-    ]
+    lists: []
   }
   static getDerivedStateFromProps (props, state) {
     const prevProps = state.prevProps
@@ -144,10 +112,10 @@ export default class TreeComponent extends React.Component {
   _onLoadData = async treeNode => {
     const { onLoadData } = this.props
     const { dataRef } = treeNode.props
-    const { isEmpty, children, root } = dataRef
+    const { isEmpty, children } = dataRef
 
     return new Promise(async (resolve, reject) => {
-      if (isEmpty || root || children.length) {
+      if (isEmpty || children.length) {
         resolve()
         return
       }
@@ -226,9 +194,6 @@ export default class TreeComponent extends React.Component {
       if (!isEmpty && children.length) {
         return (
           <TreeNode
-            // icon={
-            //   <Icon style={{ color: '#FFCD2E' }} type="folder" theme="filled" />
-            // }
             icon={<FileIcon type="folder" />}
             title={name}
             key={uuid}
@@ -248,10 +213,8 @@ export default class TreeComponent extends React.Component {
     return (
       <Modal
         title={title}
-        // width={485}
         footer={null}
         visible={visible}
-        // onOk={onOk}
         onCancel={onCancel}
         className="q-tree"
         width={600}
@@ -266,8 +229,8 @@ export default class TreeComponent extends React.Component {
             icon={<FileIcon type="folder" />}
             title={'全部文件'}
             key={'1024'}
-            dataRef={{ root: true, type: 'directory' }}
-            isLeaf={false}
+            dataRef={{ root: true, type: 'directory', children: lists }}
+            isLeaf={!lists.length}
           >
             {this.renderTreeNodes(lists)}
           </TreeNode>
