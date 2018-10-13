@@ -9,14 +9,17 @@ import { Button } from 'antd'
 
 class Appointment extends React.Component {
   static defaultProps = {}
+
   state = {
     visible: false
   }
+
   toggle = () => {
     const { visible } = this.state
     this.setState({ visible: !visible })
   }
-  render () {
+
+  render() {
     return (
       <div>
         <h1>qxx 3.0</h1>

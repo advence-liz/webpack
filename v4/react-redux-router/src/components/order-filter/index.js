@@ -4,23 +4,21 @@ import React from 'react'
 // import { push } from 'connected-react-router'
 import moment from 'moment'
 import PropTypes from 'prop-types'
-import { Row, Col, Input, DatePicker, Button, Select } from 'antd'
+import {
+  Row, Col, Input, DatePicker, Button, Select
+} from 'antd'
 
 /* eslint-disable camelcase */
 class OrderFilter extends React.Component {
   static defaultProps = {
-    onFilterChange (state) {
+    onFilterChange(state) {
       console.dir(state)
     },
-    getCategory () {
-      return new Promise(resolve =>
-        setTimeout(resolve, 500, [
-          { id: 0, name: '数学' },
-          { id: 1, name: '语文' }
-        ])
-      )
+    getCategory() {
+      return new Promise(resolve => setTimeout(resolve, 500, [{ id: 0, name: '数学' }, { id: 1, name: '语文' }]))
     }
   }
+
   state = {
     selectedRange: [],
     userName: '',
@@ -28,13 +26,13 @@ class OrderFilter extends React.Component {
     category: [],
     categoryId: -1
   }
-  get selectedRange () {
+
+  get selectedRange() {
     const { selectedRange } = this.state
-    return selectedRange.map(date => {
-      return date ? moment(date) : null
-    })
+    return selectedRange.map(date => (date ? moment(date) : null))
   }
-  get category () {
+
+  get category() {
     const { category } = this.state
 
     return category.map((item, index) => {
@@ -46,10 +44,12 @@ class OrderFilter extends React.Component {
       )
     })
   }
+
   onRangeChange = (moment, format) => {
     this.setState({ selectedRange: format })
   }
-  onInputChange = event => {
+
+  onInputChange = (event) => {
     const {
       target: { name, value }
     } = event
@@ -57,9 +57,11 @@ class OrderFilter extends React.Component {
     this.state[name] = value // eslint-disable-line
     this.setState({})
   }
-  onSelectChange = categoryId => {
+
+  onSelectChange = (categoryId) => {
     this.setState({ categoryId })
   }
+
   submit = () => {
     const { onFilterChange } = this.props
     const {
@@ -77,13 +79,15 @@ class OrderFilter extends React.Component {
       time_to
     })
   }
-  async componentDidMount () {
+
+  async componentDidMount() {
     const { getCategory } = this.props
     const category = await getCategory()
 
     this.setState({ category })
   }
-  render () {
+
+  render() {
     const { userName, courseName } = this.state
     const inputStyle = {
       width: 220,
@@ -92,17 +96,13 @@ class OrderFilter extends React.Component {
     return (
       <div>
         <Row gutter={20} style={{ marginBottom: 12 }}>
-          <Col span={7}>
+          <Col span={8}>
             所属类目
-            <Select
-              placeholder="请选择类目"
-              onChange={this.onSelectChange}
-              style={inputStyle}
-            >
+            <Select placeholder="请选择类目" onChange={this.onSelectChange} style={inputStyle}>
               {this.category}
             </Select>
           </Col>
-          <Col span={7}>
+          <Col span={8}>
             用户名称
             <Input
               name="userName"
@@ -114,7 +114,7 @@ class OrderFilter extends React.Component {
           </Col>
         </Row>
         <Row gutter={20}>
-          <Col span={7}>
+          <Col span={8}>
             课程名称
             <Input
               name="courseName"
@@ -124,7 +124,7 @@ class OrderFilter extends React.Component {
               placeholder="请输入课程名称"
             />
           </Col>
-          <Col span={7}>
+          <Col span={8}>
             下单时间
             <DatePicker.RangePicker
               style={inputStyle}

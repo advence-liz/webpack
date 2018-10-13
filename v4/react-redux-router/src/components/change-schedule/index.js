@@ -4,15 +4,17 @@ import React from 'react'
 // import { push } from 'connected-react-router'
 import moment from 'moment'
 import PropTypes from 'prop-types'
-import { Calendar, Modal, Row, Col, Radio } from 'antd'
+import {
+  Calendar, Modal, Row, Col, Radio
+} from 'antd'
 /* eslint-disable camelcase */
 class ChangeSchedule extends React.Component {
   static defaultProps = {
-    submit (state) {
+    submit(state) {
       console.dir(state)
     },
-    cancel () {},
-    getPeriods () {
+    cancel() {},
+    getPeriods() {
       return new Promise((resolve, reject) => {
         setTimeout(resolve, 500, [
           {
@@ -40,16 +42,19 @@ class ChangeSchedule extends React.Component {
     },
     visible: false
   }
+
   state = {
     selectedDate: moment().format('YYYY-MM-DD'),
     periods: [],
-    selectedPeriodIndex: -1
+    selectedPeriodIndex: 0 // 默认值设置为0 防止没选还得加验证
   }
-  get selectedDate () {
+
+  get selectedDate() {
     const { selectedDate } = this.state
     return !selectedDate ? null : moment(selectedDate)
   }
-  get periods () {
+
+  get periods() {
     const { periods } = this.state
     // const periodStyle = {
     //   padding: '12px 0px',
@@ -79,34 +84,39 @@ class ChangeSchedule extends React.Component {
       )
     })
   }
-  onSelectedDateChange = async moment => {
+
+  onSelectedDateChange = async (moment) => {
     const { getPeriods } = this.props
     const periods = await getPeriods()
     this.setState({
       selectedDate: moment.format('YYYY-MM-DD'),
       periods,
-      selectedPeriodIndex: -1
+      selectedPeriodIndex: 0
     })
   }
-  onSelectedPeriodChange = event => {
+
+  onSelectedPeriodChange = (event) => {
     const {
       target: { value }
     } = event
     this.setState({ selectedPeriodIndex: value })
   }
+
   submit = () => {
     const { submit } = this.props
     const { selectedDate, selectedPeriodIndex, periods } = this.state
     const selectedPeriod = periods[selectedPeriodIndex]
     submit({ selectedDate, ...selectedPeriod })
   }
-  async componentDidMount () {
+
+  async componentDidMount() {
     const { getPeriods } = this.props
     const periods = await getPeriods()
     this.setState({ periods })
   }
-  render () {
-    const { selectedPeriodIndex } = this.state
+
+  render() {
+    const { selectedPeriodIndex, periods } = this.state
     const bodyStyle = { padding: 0 }
 
     return (
@@ -116,6 +126,7 @@ class ChangeSchedule extends React.Component {
         onOk={this.submit}
         onCancel={this.props.cancel}
         bodyStyle={bodyStyle}
+        okButtonProps={{ disabled: !periods.length }}
         okText="确认"
         cancelText="取消"
       >

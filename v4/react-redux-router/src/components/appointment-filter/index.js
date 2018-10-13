@@ -4,30 +4,34 @@ import React from 'react'
 // import { push } from 'connected-react-router'
 import moment from 'moment'
 import PropTypes from 'prop-types'
-import { Row, Col, Input, DatePicker, Button } from 'antd'
+import {
+  Row, Col, Input, DatePicker, Button
+} from 'antd'
 /* eslint-disable camelcase */
 class AppointmentFilter extends React.Component {
   static defaultProps = {
-    onFilterChange (state) {
+    onFilterChange(state) {
       console.dir(state)
     }
   }
+
   state = {
     selectedRange: [],
     userName: '',
     courseName: '',
     orderNumber: ''
   }
-  get selectedRange () {
+
+  get selectedRange() {
     const { selectedRange } = this.state
-    return selectedRange.map(date => {
-      return date ? moment(date) : null
-    })
+    return selectedRange.map(date => (date ? moment(date) : null))
   }
+
   onRangeChange = (moment, format) => {
     this.setState({ selectedRange: format })
   }
-  onInputChange = event => {
+
+  onInputChange = (event) => {
     const {
       target: { name, value }
     } = event
@@ -35,24 +39,24 @@ class AppointmentFilter extends React.Component {
     this.state[name] = value // eslint-disable-line
     this.setState({})
   }
+
   submit = () => {
     const { onFilterChange } = this.props
     const {
-      userName: student_name,
       courseName: course_name,
       orderNumber: order_number,
       selectedRange: [time_from, time_to]
     } = this.state
 
     onFilterChange({
-      student_name,
       course_name,
       order_number,
       time_from,
       time_to
     })
   }
-  render () {
+
+  render() {
     const { userName, courseName, orderNumber } = this.state
     const inputStyle = {
       width: 220,
@@ -61,7 +65,7 @@ class AppointmentFilter extends React.Component {
     return (
       <div>
         <Row gutter={20} style={{ marginBottom: 12 }}>
-          <Col span={7}>
+          <Col span={8}>
             上课日期
             <DatePicker.RangePicker
               style={inputStyle}
@@ -69,7 +73,7 @@ class AppointmentFilter extends React.Component {
               onChange={this.onRangeChange}
             />
           </Col>
-          <Col span={7}>
+          <Col span={8}>
             用户名称
             <Input
               name="userName"
@@ -81,7 +85,7 @@ class AppointmentFilter extends React.Component {
           </Col>
         </Row>
         <Row gutter={20}>
-          <Col span={7}>
+          <Col span={8}>
             商品名称
             <Input
               name="courseName"
@@ -91,7 +95,7 @@ class AppointmentFilter extends React.Component {
               placeholder="请输入商品名称"
             />
           </Col>
-          <Col span={7}>
+          <Col span={8}>
             订单编号
             <Input
               name="orderNumber"
