@@ -4,24 +4,46 @@ import React from 'react'
 // import { push } from 'connected-react-router'
 import moment from 'moment'
 import PropTypes from 'prop-types'
-import { Row, Col, Input, DatePicker, Button } from 'antd'
+import { Row, Col, Input, DatePicker, Button, Select } from 'antd'
+
 /* eslint-disable camelcase */
-class AppointmentFilter extends React.Component {
+class OrderFilter extends React.Component {
   static defaultProps = {
     onFilterChange (state) {
       console.dir(state)
+    },
+    getCategory () {
+      return new Promise(resolve =>
+        setTimeout(resolve, 500, [
+          { id: 0, name: '数学' },
+          { id: 1, name: '语文' }
+        ])
+      )
     }
   }
   state = {
     selectedRange: [],
     userName: '',
     courseName: '',
-    orderNumber: ''
+    category: [],
+    categoryId: -1
   }
   get selectedRange () {
     const { selectedRange } = this.state
     return selectedRange.map(date => {
       return date ? moment(date) : null
+    })
+  }
+  get category () {
+    const { category } = this.state
+
+    return category.map((item, index) => {
+      const { id, name } = item
+      return (
+        <Select.Option key={`${id}-${index}`} value={id}>
+          {name}
+        </Select.Option>
+      )
     })
   }
   onRangeChange = (moment, format) => {
@@ -35,25 +57,34 @@ class AppointmentFilter extends React.Component {
     this.state[name] = value // eslint-disable-line
     this.setState({})
   }
+  onSelectChange = categoryId => {
+    this.setState({ categoryId })
+  }
   submit = () => {
     const { onFilterChange } = this.props
     const {
       userName: student_name,
       courseName: course_name,
-      orderNumber: order_number,
+      categoryId: category_id,
       selectedRange: [time_from, time_to]
     } = this.state
 
     onFilterChange({
       student_name,
       course_name,
-      order_number,
+      category_id,
       time_from,
       time_to
     })
   }
+  async componentDidMount () {
+    const { getCategory } = this.props
+    const category = await getCategory()
+
+    this.setState({ category })
+  }
   render () {
-    const { userName, courseName, orderNumber } = this.state
+    const { userName, courseName } = this.state
     const inputStyle = {
       width: 220,
       marginLeft: 12
@@ -62,12 +93,14 @@ class AppointmentFilter extends React.Component {
       <div>
         <Row gutter={20} style={{ marginBottom: 12 }}>
           <Col span={7}>
-            上课日期
-            <DatePicker.RangePicker
+            所属类目
+            <Select
+              placeholder="请选择类目"
+              onChange={this.onSelectChange}
               style={inputStyle}
-              value={this.selectedRange}
-              onChange={this.onRangeChange}
-            />
+            >
+              {this.category}
+            </Select>
           </Col>
           <Col span={7}>
             用户名称
@@ -82,25 +115,24 @@ class AppointmentFilter extends React.Component {
         </Row>
         <Row gutter={20}>
           <Col span={7}>
-            商品名称
+            课程名称
             <Input
               name="courseName"
               style={inputStyle}
-              value={courseName}
               onChange={this.onInputChange}
-              placeholder="请输入商品名称"
+              value={courseName}
+              placeholder="请输入课程名称"
             />
           </Col>
           <Col span={7}>
-            订单编号
-            <Input
-              name="orderNumber"
+            下单时间
+            <DatePicker.RangePicker
               style={inputStyle}
-              value={orderNumber}
-              onChange={this.onInputChange}
-              placeholder="请输入订单编号"
+              value={this.selectedRange}
+              onChange={this.onRangeChange}
             />
           </Col>
+
           <Col span={4}>
             <Button type="primary" onClick={this.submit}>
               查询
@@ -111,7 +143,8 @@ class AppointmentFilter extends React.Component {
     )
   }
 }
-AppointmentFilter.propTypes = {
-  onFilterChange: PropTypes.func.isRequired
+OrderFilter.propTypes = {
+  onFilterChange: PropTypes.func.isRequired,
+  getCategory: PropTypes.func.isRequired
 }
-export default AppointmentFilter
+export default OrderFilter
