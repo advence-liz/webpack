@@ -4,7 +4,9 @@ import React from 'react'
 // import { push } from 'connected-react-router'
 import moment from 'moment'
 import PropTypes from 'prop-types'
-import { Row, Col, Input, DatePicker, Button } from 'antd'
+import {
+  Row, Col, Input, DatePicker, Button
+} from 'antd'
 /* eslint-disable camelcase */
 class AppointmentFilter extends React.Component {
   static defaultProps = {
@@ -36,6 +38,15 @@ class AppointmentFilter extends React.Component {
 
     this.state[name] = value // eslint-disable-line
     this.setState({})
+  }
+
+  clear = () => {
+    this.setState({
+      selectedRange: [],
+      userName: '',
+      courseName: '',
+      orderNumber: ''
+    })
   }
 
   submit = () => {
@@ -105,9 +116,14 @@ class AppointmentFilter extends React.Component {
               placeholder="请输入订单编号"
             />
           </Col>
-          <Col span={4}>
-            <Button type="primary" onClick={this.submit}>
+          <Col span={2}>
+            <Button type="primary" block onClick={this.submit}>
               查询
+            </Button>
+          </Col>
+          <Col span={2}>
+            <Button type="default" block onClick={this.clear}>
+              清除
             </Button>
           </Col>
         </Row>

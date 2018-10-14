@@ -62,6 +62,16 @@ class OrderFilter extends React.Component {
     this.setState({ categoryId })
   }
 
+  clear = () => [
+    this.setState({
+      selectedRange: [],
+      userName: '',
+      courseName: '',
+      category: [],
+      categoryId: -1
+    })
+  ]
+
   submit = () => {
     const { onFilterChange } = this.props
     const {
@@ -133,9 +143,14 @@ class OrderFilter extends React.Component {
             />
           </Col>
 
-          <Col span={4}>
-            <Button type="primary" onClick={this.submit}>
+          <Col span={2}>
+            <Button type="primary" block onClick={this.submit}>
               查询
+            </Button>
+          </Col>
+          <Col span={2}>
+            <Button type="default" block onClick={this.clear}>
+              清除
             </Button>
           </Col>
         </Row>
