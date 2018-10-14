@@ -4,9 +4,7 @@ import React from 'react'
 // import { push } from 'connected-react-router'
 import moment from 'moment'
 import PropTypes from 'prop-types'
-import {
-  Row, Col, Input, DatePicker, Button
-} from 'antd'
+import { Row, Col, Input, DatePicker, Button } from 'antd'
 /* eslint-disable camelcase */
 class AppointmentFilter extends React.Component {
   static defaultProps = {
@@ -45,10 +43,12 @@ class AppointmentFilter extends React.Component {
     const {
       courseName: course_name,
       orderNumber: order_number,
+      userName: user_name,
       selectedRange: [time_from, time_to]
     } = this.state
 
     onFilterChange({
+      user_name,
       course_name,
       order_number,
       time_from,
@@ -86,7 +86,7 @@ class AppointmentFilter extends React.Component {
         </Row>
         <Row gutter={20}>
           <Col span={8}>
-            商品名称
+            课程名称
             <Input
               name="courseName"
               style={inputStyle}

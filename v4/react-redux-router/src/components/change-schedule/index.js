@@ -87,7 +87,8 @@ class ChangeSchedule extends React.Component {
 
   onSelectedDateChange = async (moment) => {
     const { getPeriods } = this.props
-    const periods = await getPeriods()
+    const { selectedDate: date } = this.state
+    const periods = await getPeriods({ date })
     this.setState({
       selectedDate: moment.format('YYYY-MM-DD'),
       periods,
@@ -109,14 +110,18 @@ class ChangeSchedule extends React.Component {
     submit({ selectedDate, ...selectedPeriod })
   }
 
-  async componentDidMount() {
-    const { getPeriods } = this.props
-    const periods = await getPeriods()
-    this.setState({ periods })
+  async componentDidUpdate(prevProps, prevState) {
+    const { visible, getPeriods } = this.props
+    if (prevProps.visible === false && visible === true) {
+      const { selectedDate: date } = this.state
+      const periods = await getPeriods({ date })
+      this.setState({ periods })
+    }
   }
 
+  // async componentDidMount() {}
   render() {
-    const { selectedPeriodIndex, periods } = this.state
+    const { selectedPeriodIndex } = this.state
     const bodyStyle = { padding: 0 }
 
     return (
@@ -126,7 +131,6 @@ class ChangeSchedule extends React.Component {
         onOk={this.submit}
         onCancel={this.props.cancel}
         bodyStyle={bodyStyle}
-        okButtonProps={{ disabled: !periods.length }}
         okText="确认"
         cancelText="取消"
       >
@@ -158,5 +162,6 @@ class ChangeSchedule extends React.Component {
 ChangeSchedule.propTypes = {
   submit: PropTypes.func.isRequired,
   cancel: PropTypes.func.isRequired
+  // getPeriods: PropTypes.func.getPeriods
 }
 export default ChangeSchedule
