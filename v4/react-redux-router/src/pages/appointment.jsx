@@ -5,18 +5,26 @@ import React from 'react'
 import AppointmentFilter from 'components/appointment-filter'
 import OrderFilter from 'components/order-filter'
 import ChangeSchedule from 'components/change-schedule'
+import RadioGroup from 'components/radio-group'
+import CoursePopup from 'components/course-popup'
 import { Button } from 'antd'
 
 class Appointment extends React.Component {
   static defaultProps = {}
 
   state = {
-    visible: false
+    visible: false,
+    isShowCoursePopup: false
   }
 
   toggle = () => {
     const { visible } = this.state
     this.setState({ visible: !visible })
+  }
+
+  toggle1 = () => {
+    const { isShowCoursePopup } = this.state
+    this.setState({ isShowCoursePopup: !isShowCoursePopup })
   }
 
   render() {
@@ -30,6 +38,11 @@ class Appointment extends React.Component {
         <h2>ChangeSchedule</h2>
         <Button onClick={this.toggle}>Show ChangeSchedule</Button>
         <ChangeSchedule cancel={this.toggle} visible={this.state.visible} />
+        <h2>RadioGroup</h2>
+        <RadioGroup />
+        <h2>CoursePopup</h2>
+        <Button onClick={this.toggle1}>Show CoursePopup</Button>
+        <CoursePopup cancel={this.toggle1} visible={this.state.isShowCoursePopup} />
       </div>
     )
   }

@@ -65,14 +65,7 @@ class ChangeSchedule extends React.Component {
     // }
     return periods.map((period, index) => {
       const { time_from, time_to } = period
-      // const background = '#D9D9D9'
-      // return (
-      //   <Col span={8} key={`qxx-period-${index}`}>
-      //     <div style={{ ...periodStyle, background }} onClick>
-      //       {time_from}-{time_to}
-      //     </div>
-      //   </Col>
-      // )
+
       return (
         <Radio.Button
           style={{ borderRadius: 2, margin: '12px 6px', marginTop: 0 }}
