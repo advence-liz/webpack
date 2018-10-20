@@ -1,4 +1,4 @@
-export default function createSetStore (Namespace, dispatch) {
+export default function createSetStore(Namespace, dispatch) {
   /**
    *
    * @param {object} state 要更新到store 的state
@@ -22,7 +22,8 @@ export default function createSetStore (Namespace, dispatch) {
    * }
    */
   return (state, type) => {
-    let action = type
+    if (state.constructor != Object) throw new Error('state must be object')
+    const action = type
       ? {
         type: `${type}$${Namespace}`,
         state

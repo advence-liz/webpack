@@ -65,7 +65,14 @@ class ChangeSchedule extends React.Component {
     // }
     return periods.map((period, index) => {
       const { time_from, time_to } = period
-
+      // const background = '#D9D9D9'
+      // return (
+      //   <Col span={8} key={`qxx-period-${index}`}>
+      //     <div style={{ ...periodStyle, background }} onClick>
+      //       {time_from}-{time_to}
+      //     </div>
+      //   </Col>
+      // )
       return (
         <Radio.Button
           style={{ borderRadius: 2, margin: '12px 6px', marginTop: 0 }}
@@ -80,8 +87,8 @@ class ChangeSchedule extends React.Component {
 
   onSelectedDateChange = async (moment) => {
     const { getPeriods } = this.props
-    const { selectedDate: date } = this.state
-    const periods = await getPeriods({ date })
+    // const { selectedDate: date } = this.state
+    const periods = await getPeriods({ date: moment.format('YYYY-MM-DD') })
     this.setState({
       selectedDate: moment.format('YYYY-MM-DD'),
       periods,
@@ -114,7 +121,7 @@ class ChangeSchedule extends React.Component {
 
   // async componentDidMount() {}
   render() {
-    const { selectedPeriodIndex } = this.state
+    const { selectedPeriodIndex, periods } = this.state
     const bodyStyle = { padding: 0 }
 
     return (
@@ -125,6 +132,7 @@ class ChangeSchedule extends React.Component {
         onCancel={this.props.cancel}
         bodyStyle={bodyStyle}
         okText="确认"
+        okButtonProps={{ disabled: !periods.length }}
         cancelText="取消"
       >
         <Row style={{ padding: '0 80px' }}>
