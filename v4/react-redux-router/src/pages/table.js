@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Absence from 'absence'
-import { push } from 'connected-react-router'
+
 import { Button, Table } from 'antd'
 import actionFactory from 'actions/action-factory'
 
@@ -58,47 +57,14 @@ const rowSelection = {
   })
 }
 
-class Page extends React.Component {
+export default class TablePage extends React.Component {
   static defaultProps = {}
 
-  onClick = () => {
-    const { setStore } = this.props
-    // this.props.history.goBack()
-    setStore({ visible: true })
-  }
-
-  onPopupCancel = () => {
-    const { setStore, dispatch } = this.props
-    // dispatch(push('/'))
-    setStore({ visible: false }, 'cancel')
-  }
-
   render() {
-    const { visible } = this.props
     return (
       <div>
-        <Button onClick={this.onClick}>show</Button>
-        {/* <Absence visible={visible} onCancel={this.onPopupCancel} /> */}
         <Table rowSelection={rowSelection} columns={columns} dataSource={data} />
       </div>
     )
   }
 }
-function mapStateToProps(state) {
-  const { absence } = state
-  return absence
-}
-function mapDispatchToProps(dispatch) {
-  return {
-    setStore: actionFactory('ABSENCE', dispatch)
-    // dispatch (action) {
-    //   dispatch(action)
-    // }
-  }
-}
-
-const PageVisible = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Page)
-export default PageVisible
