@@ -18,6 +18,7 @@ export default class FetchAction {
   constructor(dispatch) {
     this.dispatch = dispatch
   }
+
   //   俩个参数 url callback
   // 三个参数 url params callback
   // 因为之后使用的时候结构赋值this丢失,所以这里使用了箭头函数
@@ -31,6 +32,7 @@ export default class FetchAction {
     }
     this.dispatch(Get(url, query)).then(callback)
   }
+
   Post = (url, params, callback) => {
     this.dispatch(Post(url, params)).then(callback)
   }
