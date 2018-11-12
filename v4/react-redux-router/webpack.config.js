@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+
 module.exports = {
   entry: './src/',
   mode: 'development',
@@ -18,7 +19,10 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         use: [
           {
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true
+            }
           }
         ]
       },
@@ -85,12 +89,20 @@ module.exports = {
       actions: path.resolve('src', 'actions'),
       reducers: path.resolve('src', 'reducers'),
       pages: path.resolve('src', 'pages'),
-      components: path.resolve('src', 'components')
+      components: path.resolve('src', 'components'),
+      assets: path.resolve('src', 'assets')
     }
   },
   devServer: {
     historyApiFallback: true,
-    hot: true
+    hot: true,
+    proxy: {
+      // proxy URLs to backend development server
+      '/api': {
+        target: 'http://localhost:3000',
+        pathRewrite: { '^/api': '' }
+      }
+    }
   },
   devtool: 'source-map',
   plugins: [

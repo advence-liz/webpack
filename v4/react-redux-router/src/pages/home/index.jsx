@@ -1,18 +1,23 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-export default class Home extends React.Component {
+import FetchAction from 'actions/fetch-action'
+import actionFactory from 'actions/action-factory'
+
+class Home extends React.Component {
   static defaultProps = {
-    setValidation (val) {
+    setValidation(val) {
       // this.setState({ validation: value })
     },
-    onRefresh (during) {
+    onRefresh(during) {
       console.log(during)
       // this.setState({ scheduleData: data1 })
     },
-    click (date) {
+    click(date) {
       console.log(date)
     }
   }
+
   state = {
     searchKey: '',
     visible: true,
@@ -39,8 +44,12 @@ export default class Home extends React.Component {
     ]
   }
 
-  render () {
-    const { searchKey, visible, lists } = this.state
+  componentDidMount() {
+    const { Get } = this.props
+    Get('/api/books/foo/bar')
+  }
+
+  render() {
     return (
       <div>
         <h1>Home</h1>
@@ -48,3 +57,23 @@ export default class Home extends React.Component {
     )
   }
 }
+
+function mapStateToProps(state, ownProps) {
+  return state
+}
+
+function mapDispatchToProps(dispatch) {
+  const setStore = actionFactory('HOME', dispatch)
+  const { Get, Post } = new FetchAction(dispatch)
+  return {
+    Get,
+    Post,
+    setStore
+  }
+}
+
+// 组件与Redux Store连接
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home)

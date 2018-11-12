@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
+import thunk from 'redux-thunk'
 import 'babel-polyfill'
 import {
   BrowserRouter as Router, Link, Switch, Route
@@ -22,7 +23,7 @@ const {
 const history = createBrowserHistory()
 const store = createStore(
   connectRouter(history)(rootReducer),
-  compose(composeWithDevTools(applyMiddleware(routerMiddleware(history))))
+  compose(composeWithDevTools(applyMiddleware(...[thunk, routerMiddleware(history)])))
 )
 
 class App extends React.Component {
