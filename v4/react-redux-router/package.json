@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "server":"cd server && npm run dev",
+    "dev":"npm start & npm run server",
     "start": "webpack-dev-server --content-base=build --color",
     "build": "webpack"
   },
-  "keywords": [
-    "webpack"
-  ],
+  "keywords": ["webpack"],
   "author": "advence-liz",
   "license": "ISC",
   "devDependencies": {
@@ -47,7 +47,6 @@
     "copy-webpack-plugin": "^4.5.2",
     "cross-fetch": "^2.2.3",
     "history": "^4.7.2",
-    "immutable": "^3.7.4",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "moment": "^2.22.2",

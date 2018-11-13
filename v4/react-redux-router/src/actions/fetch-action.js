@@ -1,10 +1,10 @@
+import { from } from 'rxjs/observable/from'
+
 /**
  * fetch的action creator
  */
 
-import Fetcher from 'assets/Fetcher'
-
-const fetcher = new Fetcher()
+import fetcher from 'assets/Fetcher'
 
 function Get(url, params) {
   return () => fetcher.get(`${url}`, params)

@@ -99,8 +99,12 @@ module.exports = {
     proxy: {
       // proxy URLs to backend development server
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'http://localhost:3003/',
         pathRewrite: { '^/api': '' }
+      },
+      '/image': {
+        target: 'http://localhost:3003/image',
+        pathRewrite: { '^/image': '' }
       }
     }
   },
