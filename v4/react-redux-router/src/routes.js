@@ -1,20 +1,13 @@
-import Home from 'pages/home'
-import TimeCreate from 'time-create'
-import Upload from 'file-upload'
-import Tree from 'file-tree'
-import Tree1 from 'tree-1'
 import TreePage from 'pages/tree-page'
 import appointment from 'pages/appointment'
-import TablePage from 'pages/table'
+import Home from 'pages/home'
+import ComplaintPage from 'pages/complaint'
 
 const Routers = []
+
 Routers.push({ path: '/', component: Home })
 
-Routers.push({ path: '/timecreate', component: TimeCreate })
-Routers.push({ path: '/upload', component: Upload })
-Routers.push({ path: '/tree', component: Tree })
-Routers.push({ path: '/tree1', component: Tree1 })
 Routers.push({ path: '/tree-page', component: TreePage })
 Routers.push({ path: '/appointment', component: appointment })
-Routers.push({ path: '/table', component: TablePage })
+Routers.push({ path: '/complaint', component: ComplaintPage })
 export default Routers

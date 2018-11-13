@@ -2,12 +2,12 @@ import React from 'react'
 // import { connect } from 'react-redux'
 // import actionFactory from 'actions/action-factory'
 // import { push } from 'connected-react-router'
-import AppointmentFilter from 'components/appointment-filter'
-import OrderFilter from 'components/order-filter'
-import ChangeSchedule from 'components/change-schedule'
-import RadioGroup from 'components/radio-group'
-import CoursePopup from 'components/course-popup'
+import RadioGroup from 'radio-group'
 import { Button } from 'antd'
+import AppointmentFilter from './appointment-filter'
+import OrderFilter from './order-filter'
+import ChangeSchedule from './change-schedule'
+import CoursePopup from './course-popup'
 
 class Appointment extends React.Component {
   static defaultProps = {}

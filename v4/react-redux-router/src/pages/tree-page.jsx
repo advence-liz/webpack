@@ -1,28 +1,30 @@
 import React from 'react'
 
-import FileTree from 'components/file-tree'
-function guid () {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    var r = (Math.random() * 16) | 0
+import FileTree from 'file-tree'
 
-    var v = c === 'x' ? r : (r & 0x3) | 0x8
+function guid() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0
+
+    const v = c === 'x' ? r : (r & 0x3) | 0x8
     return v.toString(16)
   })
 }
 
 export default class Home extends React.Component {
   static defaultProps = {
-    setValidation (val) {
+    setValidation(val) {
       // this.setState({ validation: value })
     },
-    onRefresh (during) {
+    onRefresh(during) {
       console.log(during)
       // this.setState({ scheduleData: data1 })
     },
-    click (date) {
+    click(date) {
       console.log(date)
     }
   }
+
   state = {
     searchKey: '',
     visible: true,
@@ -40,12 +42,15 @@ export default class Home extends React.Component {
       // }
     ]
   }
+
   click = () => {
     this.setState({ searchKey: new Date().getTime(), visible: true })
   }
+
   cancel = () => {
     this.setState({ visible: false })
   }
+
   reset = () => {
     this.setState({
       lists: [
@@ -63,17 +68,13 @@ export default class Home extends React.Component {
       ]
     })
   }
-  render () {
+
+  render() {
     const { searchKey, visible, lists } = this.state
     return (
       <div>
         <h1>Home</h1>
-        <FileTree
-          searchKey={searchKey}
-          visible={visible}
-          lists={lists}
-          onCancel={this.cancel}
-        />
+        <FileTree searchKey={searchKey} visible={visible} lists={lists} onCancel={this.cancel} />
         <button onClick={this.click}>searchKey</button>
         <button onClick={this.reset}>reset</button>
       </div>

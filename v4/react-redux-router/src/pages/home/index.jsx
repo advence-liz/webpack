@@ -46,7 +46,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     const { Get } = this.props
-    Get('/api/books/foo/bar')
+    // Get('/api/books/foo/bar')
   }
 
   render() {

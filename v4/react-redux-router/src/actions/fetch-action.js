@@ -4,18 +4,18 @@ import { from } from 'rxjs/observable/from'
  * fetch的action creator
  */
 
-import fetcher from 'assets/Fetcher'
+import fetchWrap from 'assets/Fetcher'
 
 function Get(url, params) {
-  return () => fetcher.get(`${url}`, params)
+  return () => fetchWrap.get(`${url}`, params)
 }
 
 function Post(url, params) {
-  return () => fetcher.post(`${url}`, params)
+  return () => fetchWrap.post(`${url}`, params)
 }
 
 function PostFormData(url, formData = {}) {
-  return () => fetcher.postFormData(`${url}`, formData)
+  return () => fetchWrap.postFormData(`${url}`, formData)
 }
 function noop(d) {
   return d

@@ -15,11 +15,7 @@ export function Post(url, data) {
 }
 
 export function Get(url, data) {
-  return fetch(url)
-    .then(response => response.json())
-    .then((myJson) => {
-      console.log(myJson)
-    })
+  return fetch(url).then(response => response.json())
 }
 // const formData = new FormData()
 // const fileField = document.querySelector("input[type='file']")
@@ -31,10 +27,7 @@ export function PostFormData(url, data) {
   return fetch(url, {
     method: 'PUT',
     body: data
-  })
-    .then(response => response.json())
-    .catch(error => console.error('Error:', error))
-    .then(response => console.log('Success:', response))
+  }).then(response => response.json())
 }
 
 export default {
