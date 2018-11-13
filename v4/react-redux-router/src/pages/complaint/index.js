@@ -43,6 +43,7 @@ export default class ComplaintPage extends React.Component {
     )
     return (
       <div className="clearfix">
+      dfdfdfddd
         <Upload
           action={this.props.upload}
           listType="picture-card"

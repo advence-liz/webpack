@@ -13,5 +13,16 @@
 - `context`无效,只要给 scope 一个名字就可以就可以，以名字为前缀引用了显然这种方案更方便移植
 - 引用的时候大概这样 `import b from 'abc/dll/b'`
 
+## 注意
+
+```js
+   new CleanWebpackPlugin('vendor') // 要将生产的文件copy到 build下
+```
+
+```html
+     <!-- 模板也手动引入文件 -->
+    <script type="text/javascript" src="/vendor/dll.vendor.js"></script>
+    <script type="text/javascript" src="/vendor/dll.scope.js"></script>
+```
 ## TODO
 [ ] 验证当使用ts的时候 scoped 模式是否会有问题，感觉得配置 path

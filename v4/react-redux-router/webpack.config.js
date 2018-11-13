@@ -113,13 +113,17 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(['build']),
+    new webpack.DllReferencePlugin({
+      context: path.resolve(__dirname),
+      manifest: path.resolve(__dirname, './vendor/vendor-manifest.json')
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'template/_layout.ejs',
       favicon: 'template/favicon.ico',
-      // inject: false,
-      title: 'webpack'
+      title: 'react-redux-router'
     }),
+    new CopyWebpackPlugin([{ from: 'vendor/*.js' }]),
     new CopyWebpackPlugin([{ from: 'image/**/*' }])
     // new webpack.DefinePlugin({
     //   PRODUCTION: true,
