@@ -1,31 +1,10 @@
 {
-  "name": "template",
+  "name": "react-redux-router",
   "version": "1.0.0",
-  "description": "a webpack template ",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "cd server && npm run dev",
-    "dev": "npm start & npm run server",
-    "start": "webpack-dev-server --content-base=build --color",
-    "build": "webpack",
-    "build:vendor": "webpack --config webpack.vendor.js"
-  },
-  "keywords": [
-    "webpack"
-  ],
-  "author": "advence-liz",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-core": "^6.26.3",
+  "description": "- [history](https://github.com/ReactTraining/history)",
+  "main": ".eslintrc.js",
+  "dependencies": {
     "babel-eslint": "^8.2.6",
-    "babel-loader": "^7.1.5",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "clean-webpack-plugin": "^0.1.19",
-    "css-loader": "^1.0.0",
     "eslint": "^5.1.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-standard": "^11.0.0",
@@ -34,33 +13,15 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-react": "^7.11.1",
-    "eslint-plugin-standard": "^3.1.0",
-    "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.9.3",
-    "react-router-dom": "^4.3.1",
-    "sass-loader": "^7.0.3",
-    "style-loader": "^0.21.0",
-    "webpack": "^4.16.1",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.4"
+    "eslint-plugin-standard": "^3.1.0"
   },
-  "dependencies": {
-    "antd": "^3.8.1",
-    "connected-react-router": "^4.4.1",
-    "copy-webpack-plugin": "^4.5.2",
-    "cross-fetch": "^2.2.3",
-    "history": "^4.7.2",
-    "immutable": "^4.0.0-rc.12",
-    "less": "^3.8.1",
-    "less-loader": "^4.1.0",
-    "moment": "^2.22.2",
-    "prop-types": "^15.6.2",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
-    "react-redux": "^5.0.7",
-    "react-router": "^4.3.1",
-    "redux": "^4.0.0",
-    "redux-devtools-extension": "^2.13.5",
-    "redux-thunk": "^2.3.0"
-  }
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "y:c":"cd server &&  yarn",
+    "y:s":" cd client &&  yarn",
+    "start": "yarn & npm run y:c &npm run  y:s"
+  },
+  "author": "",
+  "license": "ISC"
 }
