@@ -15,11 +15,7 @@ class OrderFilter extends React.Component {
       console.dir(state)
     },
     getCategory() {
-      return new Promise(resolve => setTimeout(resolve, 500, [
-        { id: -1, name: '全部' },
-        { id: 0, name: '数学' },
-        { id: 1, name: '语文' }
-      ]))
+      return new Promise(resolve => setTimeout(resolve, 500, [{ id: 0, name: '数学' }, { id: 1, name: '语文' }]))
     }
   }
 

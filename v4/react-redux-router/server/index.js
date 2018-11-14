@@ -12,8 +12,7 @@ const middlewares = jsonServer.defaults({ static: 'public' }) // { static: 'publ
 
 const router = new JsonServerRouter({
   root: 'mock',
-  port: 3003,
-  publicPath: false
+  port: 3003
 })
 
 server.use(middlewares)
