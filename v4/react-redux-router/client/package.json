@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "cd server && npm run dev",
-    "dev": "npm start & npm run server",
+    "dev": "npm start",
     "start": "webpack-dev-server --content-base=build --color",
     "build": "webpack",
     "build:vendor": "webpack --config webpack.vendor.js"
   },
-  "keywords": ["webpack"],
+  "keywords": [
+    "webpack"
+  ],
   "author": "advence-liz",
   "license": "ISC",
   "devDependencies": {
@@ -30,9 +31,7 @@
     "style-loader": "^0.21.0",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.4"
-  },
-  "dependencies": {
+    "webpack-dev-server": "^3.1.4",
     "antd": "^3.8.1",
     "connected-react-router": "^4.4.1",
     "copy-webpack-plugin": "^4.5.2",

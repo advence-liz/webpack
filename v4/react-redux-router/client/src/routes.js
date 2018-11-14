@@ -6,7 +6,6 @@ import ComplaintPage from 'pages/complaint'
 const Routers = []
 
 Routers.push({ path: '/', component: Home })
-
 Routers.push({ path: '/tree-page', component: TreePage })
 Routers.push({ path: '/appointment', component: appointment })
 Routers.push({ path: '/complaint', component: ComplaintPage })

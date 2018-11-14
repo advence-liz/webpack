@@ -5,9 +5,9 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "prestart": "npm install",
     "start": "node index.js",
-    "dev": "cross-env DEBUG=json-server-router nodemon index.js"
+    "debug":"cross-env DEBUG=json-server-router nodemon --inspect index.js",
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",

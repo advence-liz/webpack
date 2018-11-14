@@ -10,9 +10,26 @@ export default class ComplaintPage extends React.Component {
     },
     onCancel() {},
     upload(file) {
-      return Get('/api/upload').then(({ url }) => {
-        file.url = url
-      })
+      return new Promise(resolve => setTimeout(resolve, 1000))
+      // return Get('/api/upload').then(({ url }) => {
+      //   file.url = url //eslint-disable-line
+      // })
+    },
+    beforeUpload(file) {
+      console.log('beforeUpload', file.name)
+    },
+    onStart: (file) => {
+      console.log('onStart', file.name)
+      // this.refs.inner.abort(file);
+    },
+    onSuccess(file) {
+      console.log('onSuccess', file)
+    },
+    onProgress(step, file) {
+      console.log('onProgress', Math.round(step.percent), file.name)
+    },
+    onError(err) {
+      console.log('onError', err)
     }
   }
 
@@ -43,7 +60,6 @@ export default class ComplaintPage extends React.Component {
     )
     return (
       <div className="clearfix">
-      dfdfdfddd
         <Upload
           action={this.props.upload}
           listType="picture-card"

@@ -28,7 +28,7 @@ const store = createStore(
 
 class App extends React.Component {
   state = {
-    theme: 'light'
+    theme: 'dark' // 'light'
   }
 
   render() {
