@@ -1346,10 +1346,10 @@ json-schema@0.2.3:
   resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
   integrity sha1-tIDIkuWaLwWVTOcnvT8qTogvnhM=
 
-json-server-router@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/json-server-router/-/json-server-router-1.0.0.tgz#7374fc2044921fff807550a52dd16949778254d8"
-  integrity sha512-0uir0tuuXdn4DUeUIrd3chi8s1uwWBn29hpLE8NWp06bMkI/KGsw/N15ECR47OGTsAEP1qQsLHAUveFKD3IAXw==
+json-server-router@^1.0.3:
+  version "1.0.3"
+  resolved "http://registry.npm.taobao.org/json-server-router/download/json-server-router-1.0.3.tgz#8eab44b3af0f855815eb66e4bcf83baf0f995107"
+  integrity sha1-jqtEs68PhVgV62bkvPg7rw+ZUQc=
   dependencies:
     debug "^4.1.0"
     fs-extra "^7.0.1"
