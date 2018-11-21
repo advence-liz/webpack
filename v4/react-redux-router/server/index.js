@@ -1,5 +1,6 @@
 const jsonServer = require('json-server')
 const JsonServerRouter = require('json-server-router')
+const { port } = require('../config')
 
 const server = jsonServer.create()
 const middlewares = jsonServer.defaults({ static: 'public' }) // { static: 'public' }
@@ -12,13 +13,13 @@ const middlewares = jsonServer.defaults({ static: 'public' }) // { static: 'publ
 
 const router = new JsonServerRouter({
   root: 'mock',
-  port: 3003
+  port
 })
 
 server.use(middlewares)
 
 server.use(router.routes())
 
-server.listen(3003, () => {
-  console.log('JSON Server is running')
+server.listen(port, () => {
+  // console.log('JSON Server is running')
 })

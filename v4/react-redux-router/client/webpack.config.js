@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const {port} = require('../config')
 
 module.exports = {
   entry: './src/',
@@ -99,11 +100,11 @@ module.exports = {
     proxy: {
       // proxy URLs to backend development server
       '/api': {
-        target: 'http://localhost:3003/',
+        target: `http://localhost:${port}/`,
         pathRewrite: { '^/api': '' }
       },
       '/image': {
-        target: 'http://localhost:3003/image',
+        target: `http://localhost:${port}/image`,
         pathRewrite: { '^/image': '' }
       }
     }
