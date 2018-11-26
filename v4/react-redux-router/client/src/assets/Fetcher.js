@@ -30,8 +30,10 @@ export function PostFormData(url, data) {
   }).then(response => response.json())
 }
 
-export default {
+const fetchWrap = {
   get: Get,
   post: Post,
   postFormData: PostFormData
 }
+export default fetchWrap
+export { fetchWrap }

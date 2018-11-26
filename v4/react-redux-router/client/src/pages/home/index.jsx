@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import FetchAction from 'actions/fetch-action'
 import actionFactory from 'actions/action-factory'
+import { Modal } from 'antd'
 
 class Home extends React.Component {
   static defaultProps = {
@@ -19,40 +20,43 @@ class Home extends React.Component {
   }
 
   state = {
-    searchKey: '',
     visible: true,
-    lists: [
-      {
-        type: 'directory',
-        size: '文件大小',
-        path: '',
-        id: '1',
-        isEmpty: false,
-        updatedAt: '2018-08-09',
-        name: 'folder',
-        src: '/test/test/测试文件.pdf'
-      },
-      {
-        type: 'file',
-        path: '早教视频',
-        id: '2',
-        isEmpty: true,
-        size: '文件大小',
-        name: '早教视频',
-        updatedAt: '2018-08-09'
-      }
-    ]
+    visible1: true
   }
 
   componentDidMount() {
     const { Get } = this.props
-    // Get('/api/books/foo/bar')
+    Get('/api/books/foo/bar')
   }
 
   render() {
     return (
       <div>
         <h1>Home</h1>
+        <Modal
+          title="Basic Modal A"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={() => {
+            this.setState({ visible: false })
+          }}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Modal>
+        <Modal
+          title="Basic Modal B"
+          visible={this.state.visible1}
+          onOk={this.handleOk}
+          onCancel={() => {
+            this.setState({ visible1: false })
+          }}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Modal>
       </div>
     )
   }

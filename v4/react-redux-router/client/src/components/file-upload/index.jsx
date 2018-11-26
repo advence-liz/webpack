@@ -31,9 +31,9 @@ export default class QUpload extends React.Component {
 
   handleChange = (info) => {
     // let { file, fileList } = info
-    const { file } = info
+    const { file, fileList } = info
 
-    this.setState({ fileList: [file] })
+    this.setState({ fileList: fileList.slice(-1) })
   }
 
   beforeUpload = file => false

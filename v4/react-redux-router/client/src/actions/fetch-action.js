@@ -1,25 +1,9 @@
-import { from } from 'rxjs/observable/from'
-
 /**
  * fetch的action creator
  */
 
-import fetchWrap from 'assets/Fetcher'
+import { fetchWrap } from 'assets/Fetcher'
 
-function Get(url, params) {
-  return () => fetchWrap.get(`${url}`, params)
-}
-
-function Post(url, params) {
-  return () => fetchWrap.post(`${url}`, params)
-}
-
-function PostFormData(url, formData = {}) {
-  return () => fetchWrap.postFormData(`${url}`, formData)
-}
-function noop(d) {
-  return d
-}
 /**
  * 分配参数
  * @param  {...any} args params
@@ -27,10 +11,11 @@ function noop(d) {
  * 1 个参数  url
  * 2 个参数 url params 或者  url callback
  * 3 个参数 url params callback
+ * @todo [x] 去掉dispatch精简代码
  */
 function shuffleArgs(...args) {
   const len = args.length
-  let [url, params = {}, callback = noop] = args // eslint-disable-line
+  let [url, params = {}, callback = d => d] = args // eslint-disable-line
   if (len === 2 && params.constructor === Function) {
     callback = params
     params = {}
@@ -39,14 +24,14 @@ function shuffleArgs(...args) {
 }
 
 export default class FetchAction {
-  constructor(dispatch) {
-    this.dispatch = dispatch
-  }
+  // constructor(dispatch) {
+  //    = dispatch
+  // }
 
   // 1 个参数  url
   // 2 个参数 url params 或者  url callback
   // 3 个参数 url params callback
-  // 因为之后使用的时候结构赋值this丢失,所以这里使用了箭头函数
+  // 下面的dispatch属于历史问题现在已经不需要了，传不传都ok
   // const { Get, Post } = new FetchAction(dispatch)
   // Get('/ajax/user/getScheduleGrid', { from_date, to_date }, ({ data }) => {
   //   const { grid } = data
@@ -56,18 +41,18 @@ export default class FetchAction {
   //     to_date
   //   })
   // })
-  Get = (...args) => {
+  Get(...args) {
     const { url, params, callback } = shuffleArgs(...args)
-    return this.dispatch(Get(url, params)).then(callback)
+    return fetchWrap.get(url, params).then(callback)
   }
 
-  Post = (...args) => {
+  Post(...args) {
     const { url, params, callback } = shuffleArgs(...args)
-    return this.dispatch(Post(url, params)).then(callback)
+    return fetchWrap.post(url, params).then(callback)
   }
 
-  PostFormData = (...args) => {
+  PostFormData(...args) {
     const { url, params, callback } = shuffleArgs(...args)
-    return this.dispatch(PostFormData(url, params)).then(callback)
+    return fetchWrap.postFormData(url, params).then(callback)
   }
 }

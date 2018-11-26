@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 export default class Complaint extends React.Component {
   static defaultProps = {
     // visible:true,
-    // onOk(){},
+    onOk() {},
     // onCancel(){},
     getCategory() {
       return new Promise(resolve => setTimeout(resolve, 500, [
@@ -18,17 +18,22 @@ export default class Complaint extends React.Component {
       ]))
     },
     customRequest({ file, filename, onSuccess }) {
+      // filename 为常量 'file'
       const formData = new FormData()
 
       formData.append(filename, file)
 
       return new Promise((resolve) => {
         setTimeout(resolve, 1000, {
-          data: { url: new Date().toString() },
+          data: {
+            file_path: xx,
+            file_name: xx,
+            file_size: xx
+          },
           code: 200,
           message: 'scueed'
         })
-      }).then(({ data: response }) => {
+      }).then((response) => {
         onSuccess(response, file)
       })
     }
@@ -76,14 +81,14 @@ export default class Complaint extends React.Component {
 
   submit = () => {
     const { onOk } = this.props
-    const { categoryId, fileList, desc } = this.state
-    const urlList = fileList.map((file) => {
+    const { categoryId: detail_type, fileList, desc: content } = this.state
+    const pics = fileList.map((file) => {
       const {
-        response: { url }
+        response: { data }
       } = file
-      return url
+      return data
     })
-    onOk({ categoryId, urlList, desc })
+    onOk({ detail_type, pics, content })
   }
 
   async componentDidMount() {
