@@ -3,15 +3,19 @@ const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const {port} = require('../config')
+const ManifestPlugin = require('webpack-manifest-plugin')
+const { port } = require('../config')
 
 module.exports = {
   entry: './src/',
   mode: 'development',
   context: __dirname,
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build')
+    path: path.resolve(__dirname, 'build'),
+    filename: '[name].js', // npm run dev 的时候只插入runtime 然后runtime中插入main
+    chunkFilename: '[name].chunk.js'
+    // filename: '[name].[hash:8].js',
+    // chunkFilename: '[name].[hash:8].js'
   },
   module: {
     rules: [
@@ -110,6 +114,9 @@ module.exports = {
     }
   },
   devtool: 'source-map',
+  optimization: {
+    runtimeChunk: true
+  },
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -124,6 +131,7 @@ module.exports = {
       favicon: 'template/favicon.ico',
       title: 'react-redux-router'
     }),
+    // new ManifestPlugin(),
     new CopyWebpackPlugin([{ from: 'vendor/*.js' }]),
     new CopyWebpackPlugin([{ from: 'image/**/*' }])
     // new webpack.DefinePlugin({

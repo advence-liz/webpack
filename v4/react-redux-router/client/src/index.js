@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import thunk from 'redux-thunk'
+import Loadable from 'react-loadable'
 import 'babel-polyfill'
 import {
   BrowserRouter as Router, Link, Switch, Route
@@ -83,6 +84,8 @@ class App extends React.Component {
                     return <Route key={`router${index}`} exact path={path} component={component} />
                   })}
                 </Switch>
+                {/* <load />
+                <LoadableExample /> */}
               </Content>
               <Footer style={{ textAlign: 'center' }}>footer</Footer>
             </Layout>
