@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Divider } from 'antd'
-import Complaint from './components/complaint'
+import Complaint from './components/axb-call'
 
 // const Option = Select.Option;
 export default class ComplaintPage extends React.Component {

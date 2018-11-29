@@ -27,4 +27,5 @@ Routers.push({ path: '/', component: lazyLoad(() => import('pages/home')) })
 Routers.push({ path: '/tree-page', component: lazyLoad(() => import('pages/tree-page')) })
 Routers.push({ path: '/appointment', component: lazyLoad(() => import('pages/appointment')) })
 Routers.push({ path: '/complaint', component: lazyLoad(() => import('pages/complaint')) })
+Routers.push({ path: '/axb-call', component: lazyLoad(() => import('pages/axb-call')) })
 export default Routers
