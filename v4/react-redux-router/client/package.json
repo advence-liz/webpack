@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm start",
-    "start": "webpack-dev-server --content-base=build --color",
+    "dev": "nodemon ./node_modules/.bin/webpack-dev-server --color --hot --inline",
+    "start": "npm run dev",
     "build": "webpack",
     "build:vendor": "webpack --config webpack.vendor.js"
   },
@@ -16,6 +16,9 @@
   "author": "advence-liz",
   "private": true,
   "license": "ISC",
+  "nodemonConfig": {
+    "watch":["package.json","webpack*.js"]
+  },
   "devDependencies": {
     "antd": "^3.8.1",
     "babel-core": "^6.26.3",

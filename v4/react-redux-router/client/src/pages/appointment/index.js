@@ -30,7 +30,7 @@ class Appointment extends React.Component {
   render() {
     return (
       <div>
-        <h1>qxx 3.0</h1>
+        <h1>qxx</h1>
         <h2>AppointmentFilter</h2>
         <AppointmentFilter />
         <h2>OrderFilter</h2>
