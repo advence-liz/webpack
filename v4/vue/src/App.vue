@@ -1,15 +1,18 @@
 <template>
   <div id="app">
     <h1>Hello world</h1>
-
+    <div>Message: {{ msg }}</div>
   </div>
 </template>
 
 <script>
-
 export default {
-
-}
+  data() {
+    return {
+      msg: "msg"
+    };
+  }
+};
 </script>
 
 <style lang="scss">

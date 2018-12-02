@@ -53,11 +53,11 @@ module.exports = {
     // (does not apply to resolving to loaders)
     // directories where to look for modules
     extensions: ['.js', '.vue', '.json', '.less'],
-    alias: { 'vue': 'vue/dist/vue.js' }
-    // alias: {
-    //   vue$: 'vue/dist/vue.esm.js',
-    //   '@': path.resolve('src')
-    // }
+    // alias: { 'vue': 'vue/dist/vue.js' }
+    alias: {
+      vue$: 'vue/dist/vue.esm.js',
+      '@': path.resolve('src')
+    }
   },
   devServer: {
     contentBase: path.join(__dirname),
