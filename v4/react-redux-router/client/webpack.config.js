@@ -13,10 +13,11 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: '[name].js', // npm run dev 的时候只插入runtime 然后runtime中插入main
-    chunkFilename: '[name].chunk.js'
+    chunkFilename: '[name].chunk.js'// 对应chunk 来说name 就是 id
     // filename: '[name].[hash:8].js',
     // chunkFilename: '[name].[hash:8].js'
   },
+  recordsPath: path.join(__dirname, 'build', 'records.json'),
   module: {
     rules: [
       {
@@ -131,7 +132,7 @@ module.exports = {
       favicon: 'template/favicon.ico',
       title: 'react-redux-router'
     }),
-    // new ManifestPlugin(),
+    // new ManifestPlugin(), chunk 文件还是没有名字
     new CopyWebpackPlugin([{ from: 'vendor/*.js' }]),
     new CopyWebpackPlugin([{ from: 'image/**/*' }])
     // new webpack.DefinePlugin({
