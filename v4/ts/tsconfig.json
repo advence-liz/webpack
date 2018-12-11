@@ -19,8 +19,10 @@
     "paths": {
       // "paths": ["paths"],
       // "*": ["*", "path-resolve/*"],
-      "*": ["*"]
-    }
+      // "*": ["*"]
+    },
+    "typeRoots": ["./typings"]
   },
+
   "include": ["./src/**/*"]
 }

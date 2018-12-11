@@ -9,7 +9,8 @@
     "trailing-comma": false,
     "ordered-imports": false,
     "no-reference": true,
-    "no-console": false
+    "no-console": false,
+    "space-before-function-paren":false
   },
   "rulesDirectory": []
 }
