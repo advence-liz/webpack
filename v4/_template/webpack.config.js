@@ -64,7 +64,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.less', '.scss']
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.less', '.scss']
   },
   devtool: 'source-map',
   plugins: [
@@ -76,7 +76,7 @@ module.exports = {
       template: 'template/_layout.ejs',
       favicon: 'template/favicon.ico',
       // inject: false,
-      title: 'webpack'
+      title: '{{name}}'
     }),
     new webpack.DefinePlugin({
       PRODUCTION: true,
