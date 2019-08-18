@@ -1,5 +1,4 @@
 // import VConsole from 'vconsole'
-// window.vConsole = new VConsole()
 import doc from './docCookies'
 
 // const isDebug = doc.getItem('_isDebug')

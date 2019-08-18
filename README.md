@@ -13,6 +13,31 @@ webpack v4 版本下整理的一些方案,并且每个目录就是一个子工�
 - `-template` 其它方案的基本模板
 - 其它的基本见名知意
 
+## 目录
+
+```bash
+├── v2
+│   ├── bundleLoader
+│   ├── dll
+│   ├── less
+│   ├── lib
+│   ├── module
+│   └── template
+├── v4
+│   ├── _template
+│   ├── babel-runtime
+│   ├── babel-useBuiltIns
+│   ├── css-modules
+│   ├── dll
+│   ├── manifest
+│   ├── react
+│   ├── react-redux-router
+│   ├── ts
+│   ├── vconsole
+│   └── vue
+
+```
+
 ## [webpack optimize example](https://github.com/advence-liz/webpack-optimize-example)
 
 ## [官方 DEMO](https://github.com/webpack/webpack/tree/master/examples)
