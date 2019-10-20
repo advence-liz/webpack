@@ -132,7 +132,7 @@ module.exports = {
       favicon: 'template/favicon.ico',
       title: 'react-redux-router'
     }),
-    // new ManifestPlugin(), chunk 文件还是没有名字
+    // new ManifestPlugin(), // chunk 文件还是没有名字
     new CopyWebpackPlugin([{ from: 'vendor/*.js' }]),
     new CopyWebpackPlugin([{ from: 'image/**/*' }])
     // new webpack.DefinePlugin({

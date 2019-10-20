@@ -1,6 +1,6 @@
-function reducerFactory (defaultState, namespace) {
+function reducerFactory(defaultState, namespace) {
   const reducer = (preState = defaultState, action) => {
-    let { type, state } = action
+    const { type, state } = action
     /**
      * 对action的处理分为三种情况
      * 1 `Set_STORE$${namespace}` 默认更新store actin
@@ -9,11 +9,10 @@ function reducerFactory (defaultState, namespace) {
      */
     if (type === `Set_STORE$${namespace}`) {
       return { ...preState, ...state }
-    } else if (type.includes(namespace)) {
+    } if (type.includes(namespace)) {
       return { ...preState, ...state }
-    } else {
-      return preState
     }
+    return preState
   }
 
   return reducer

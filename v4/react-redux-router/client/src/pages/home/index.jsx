@@ -1,27 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
 import FetchAction from 'actions/fetch-action'
 import actionFactory from 'actions/action-factory'
 import { Modal } from 'antd'
 
 class Home extends React.Component {
   static defaultProps = {
-    setValidation(val) {
-      // this.setState({ validation: value })
-    },
-    onRefresh(during) {
-      console.log(during)
-      // this.setState({ scheduleData: data1 })
-    },
-    click(date) {
-      console.log(date)
-    }
+    books: []
   }
 
-  state = {
-    visible: true,
-    visible1: true
+  plus=() => {
+    const { setStore, count } = this.props
+    setStore({ count: count + 1 })
+  }
+
+  getBooks=() => {
+    const { setStore } = this.props
+    setStore({ books: [{ no: '011111' }, { no: '011112' }, { no: '011113' }] })
   }
 
   componentDidMount() {
@@ -30,40 +25,20 @@ class Home extends React.Component {
   }
 
   render() {
+    const { name, count, books } = this.props
     return (
       <div>
-        <h1>Home</h1>
-        <Modal
-          title="Basic Modal A"
-          visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={() => {
-            this.setState({ visible: false })
-          }}
-        >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </Modal>
-        <Modal
-          title="Basic Modal B"
-          visible={this.state.visible1}
-          onOk={this.handleOk}
-          onCancel={() => {
-            this.setState({ visible1: false })
-          }}
-        >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </Modal>
+        <h1>{name}</h1>
+        <div onClick={this.plus} >count:{count}</div>
+        <div onClick = {this.getBooks}>books</div>
+        <div>{books.map(item => <div key ={item.no}>{item.no}</div>)}</div>
       </div>
     )
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  return state
+function mapStateToProps(state) {
+  return state.home
 }
 
 function mapDispatchToProps(dispatch) {

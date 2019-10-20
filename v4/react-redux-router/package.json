@@ -13,13 +13,14 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-react": "^7.11.1",
-    "eslint-plugin-standard": "^3.1.0"
+    "eslint-plugin-standard": "^3.1.0",
+    "mockjs": "^1.0.1-beta3"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "y:c":"cd server &&  yarn",
-    "y:s":" cd client &&  yarn",
+    "y:c": "cd server &&  yarn",
+    "y:s": " cd client &&  yarn",
     "start": "yarn & npm run y:c &npm run  y:s"
   },
   "author": "",
