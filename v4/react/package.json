@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "v-react",
   "version": "1.0.0",
   "description": "a webpack template ",
   "main": "index.js",

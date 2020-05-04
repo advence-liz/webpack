@@ -39,8 +39,8 @@ module.exports = {
             loader: 'style-loader' // creates style nodes from JS strings
           },
           {
-            loader: 'css-loader', // translates CSS into CommonJS
-            options: { modules: true }
+            loader: 'css-loader' // translates CSS into CommonJS
+            // options: { modules: true }
           },
           {
             loader: 'less-loader' // compiles Less to CSS
@@ -89,9 +89,9 @@ module.exports = {
       PRODUCTION: true,
       VERSION: JSON.stringify('5fa3b9'),
       BROWSER_SUPPORTS_HTML5: true,
-      TWO: '1+1',
-      'typeof window': JSON.stringify('object'),
-      'process.env.NODE_ENV': JSON.stringify('production')
+      TWO: '1+1'
+      // 'typeof window': JSON.stringify('object'),
+      // 'process.env.NODE_ENV': JSON.stringify('production')
     })
   ]
 }
