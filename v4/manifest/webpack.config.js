@@ -111,7 +111,7 @@ module.exports = {
       chunks: ['main', 'vendors', 'runtime'],
       title: 'manifest'
     }),
-    new InlineManifestWebpackPlugin('runtime'),
+    new InlineManifestWebpackPlugin('runtime'), // 通过插件将 runtime 内联
     new webpack.DefinePlugin({
       PRODUCTION: true,
       VERSION: JSON.stringify('5fa3b9'),

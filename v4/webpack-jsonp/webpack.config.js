@@ -7,7 +7,7 @@ module.exports = {
   mode: 'development',
   context: __dirname,
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'build')
   },
   module: {
@@ -70,8 +70,11 @@ module.exports = {
   devServer: {
     writeToDisk: true
   },
+  // optimization: {
+  //   runtimeChunk: { name: 'manifest' }
+  // },
   plugins: [
-    // new webpack.NamedModulesPlugin(),
+    new webpack.NamedModulesPlugin(),
     // new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(['build']),
     new HtmlWebpackPlugin({
@@ -80,14 +83,6 @@ module.exports = {
       favicon: 'template/favicon.ico',
       // inject: false,
       title: 'webpack-jsonp'
-    }),
-    new webpack.DefinePlugin({
-      PRODUCTION: true,
-      VERSION: JSON.stringify('5fa3b9'),
-      BROWSER_SUPPORTS_HTML5: true,
-      TWO: '1+1',
-      'typeof window': JSON.stringify('object'),
-      'process.env.NODE_ENV': JSON.stringify('production')
     })
   ]
 }
