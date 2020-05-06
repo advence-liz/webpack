@@ -1,4 +1,4 @@
-console.log('module - 3')
+console.log('exectue module - 3')
 export default () => {
-  console.log('module 3')
+  console.log(' export default module 3')
 }
