@@ -1,7 +1,7 @@
 # 研究模块加载
 
 ## 模块
-模块通过函数包裹
+模块通过函数包裹,
 ```js
 /***/ "./src/module/module-2.js":
 /*!********************************!*\
@@ -22,6 +22,7 @@ exports.default = function () {
   console.log('export default module 2');
 };
 ```
+通过立即执行函数，将所有包裹后的模块，直接加载到内存中，之后需要执行模块方法得到 modules  exports
 
 ```js
 (function (modules){
@@ -31,6 +32,27 @@ exports.default = function () {
 
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
 
 /******/ 	// This file contains only the entry chunk.
 /******/ 	// The chunk loading function for additional chunks
