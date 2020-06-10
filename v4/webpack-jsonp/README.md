@@ -1,6 +1,8 @@
-# 研究模块加载
+# webpack 模块加载机制
 
-## 模块
+模块化的基础条件就是开辟一片独立的上下文,那些拥有模块化功能的语言或通过物理文件组织模块，或以抽象的 namespace package 组织模块，而JavaScript 并没这种能力只能从语法上开辟独立的上下文，就目前浏览器端运行的js来说能开辟独立上下文的方式只有一种方式 function（闭包），目前的前端的模块加载方案最终还都是要依赖function的。
+
+
 模块通过函数包裹,
 ```js
 /***/ "./src/module/module-2.js":
@@ -22,7 +24,84 @@ exports.default = function () {
   console.log('export default module 2');
 };
 ```
+
+
 通过立即执行函数，将所有包裹后的模块，直接加载到内存中，之后需要执行模块方法得到 modules  exports
+
+```js
+(function (modules){
+
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+
+
+})({/***/ "./src/module/module-1.js":
+/*!********************************!*\
+  !*** ./src/module/module-1.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  console.log('export default module 1');
+};
+
+/***/ })})
+
+```
+
+```js
+(function (modules){
+
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+                 
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+                    
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
+
+})
+({
+    "./src/module/module-1.js":
+     (function(module, exports, __webpack_require__) {
+       exports.default = function () {
+        console.log('export default module 1');
+       }}
+     ),
+      "./src/module/module-2.js":
+     (function(module, exports, __webpack_require__) {
+       exports.default = function () {
+        console.log('export default module 2');
+       }}
+     ),
+      "./src/module/module-2.js":
+     (function(module, exports, __webpack_require__) {
+       exports.default = function () {
+        console.log('export default module 3');
+       }}
+     ),
+})
+```
+
+## __webpack_require__(moduleId) 加载同步模块
+
+
 
 ```js
 (function (modules){
@@ -65,40 +144,49 @@ exports.default = function () {
 /******/ 	// mode & 8|1: behave like require
 /******/ 	__webpack_require__.t = function(value, mode) {
 
-})({/***/ "./src/module/module-2.js":
+})({/***/ "./src/module/module-1.js":
 /*!********************************!*\
-  !*** ./src/module/module-2.js ***!
+  !*** ./src/module/module-1.js ***!
   \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-console.log('exectue module - 2');
+console.log('exectue module - 1');
 
 exports.default = function () {
-  console.log('export default module 2');
+  console.log('export default module 1');
 };
 
 /***/ })})
 
 ```
 
-## __webpack_require__(moduleId) 加载同步模块
-
 ## __webpack_require__(moduleId) 加载异步模块
+
+```js
+import(
+  /* webpackChunkName: "chunk-1" */
+
+  './chunk/chunk-1.js'
+).then((c) => {
+  c.default()
+})
+
+```
  
 ```js
 //1.1  html 插入 script chunk-1 并返回 promise ,
 //1.2  js 加载完毕，执行js webpackjsonp.push 将对于模块安装到 modules 中，并调用resolve 触发 then 方法
 __webpack_require__.e(/*! import() | chunk-1 */ "chunk-1") 
 .then(__webpack_require__.t.bind(null, /*! ./chunk/chunk-1.js */ "./src/chunk/chunk-1.js", 7)) 
-// 2 通过 __webpack_require__ 执行 modules 中对应chunk "./src/chunk/chunk-1.js"
+// 2. 通过 __webpack_require__ 执行 modules 中对应chunk "./src/chunk/chunk-1.js"
 .then(function (c) {
+// 3. 执行用户自定义逻辑
   c.default();
 });
 
