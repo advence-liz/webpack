@@ -13,6 +13,9 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'no-console': 'off',
-    // 'react/jsx-uses-vars': 2
+    indent: ['error', 2],
+    'comma-dangle': ['error', 'never'],
+    quotes: ['error', 'single'],
+    semi: ['error', 'never']
   }
 }
