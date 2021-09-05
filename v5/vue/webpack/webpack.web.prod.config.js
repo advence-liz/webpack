@@ -1,5 +1,6 @@
 const { merge } = require('webpack-merge')
 const webpack = require('webpack')
+const TerserPlugin = require('terser-webpack-plugin')
 const path = require('path')
 const base = require('./webpack.web.base.config')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -29,7 +30,19 @@ module.exports = (_, options) => {
         }
       })
     ],
-    optimization: { moduleIds: 'deterministic' }
+    optimization: {
+      moduleIds: 'deterministic',
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            format: {
+              comments: false
+            }
+          },
+          extractComments: false
+        })
+      ]
+    }
   }
   return merge(base(env, options), config)
 }

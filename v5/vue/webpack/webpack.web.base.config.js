@@ -4,9 +4,10 @@ const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const FileListPlugin = require('./plugins/FileList')
 
-const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 const HTML_PATH = path.join('./webpack/html')
 
 module.exports = () => {
@@ -63,6 +64,10 @@ module.exports = () => {
       chunkFilename: '[id].js',
       path: path.resolve('./build')
     },
-    plugins: [new CleanWebpackPlugin(), new VueLoaderPlugin()]
+    plugins: [
+      new CleanWebpackPlugin(),
+      new VueLoaderPlugin(),
+      new FileListPlugin()
+    ]
   }
 }
