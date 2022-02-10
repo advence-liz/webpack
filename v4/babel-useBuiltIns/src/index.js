@@ -5,7 +5,7 @@
 // // delete Object.assign
 // console.log(Object.assign)
 // console.log(liz.includes)
-// require('babel-polyfill')
+require('babel-polyfill')
 
 // console.log(liz.includes('z'))
 // console.log(liz.includes)

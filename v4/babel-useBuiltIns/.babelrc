@@ -4,7 +4,7 @@
       "@babel/preset-env",
       {
         "targets": {
-          "browsers": ["> 1%", "last 2 versions", "iOS >= 8", "Android >= 4"]
+          "browsers": ["iOS >= 10", "Android >= 5"]
         },
         "useBuiltIns": false,
         "corejs": 3,
