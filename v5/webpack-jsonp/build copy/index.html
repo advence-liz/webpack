@@ -1,0 +1,30 @@
+<!DOCTYPE html><html style="font-size: 100px"><head><title>v5</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><script>// REM 适配
+    !(function (e) {
+      'use strict'
+      var t = document.documentElement,
+        i = window.devicePixelRatio
+      i = i >= 3 ? 3 : i >= 2 ? 2 : 1
+      var n = 1 / i,
+        a = document.querySelector('meta[name="viewport"]'),
+        c =
+          'initial-scale=' +
+          n +
+          ',maximum-scale=' +
+          n +
+          ',minimum-scale=' +
+          n +
+          ',user-scalable=no,width=device-width' +
+          ',viewport-fit=cover'
+      if (a) a.setAttribute('content', c)
+      else {
+        var o = '<meta name="viewport" content="' + c + '"/>'
+        document.write(o)
+      }
+      var r = function () {
+        var n = t.clientWidth
+        n / i > 450 && (n = 450 * i)
+        var a = (n / e) * 100
+        t.style.fontSize = a + 'px'
+      }
+      r(), window.addEventListener('resize', r)
+    })(750)</script><body><div id="root"></div><script src="99a355ff185bb672f2b6.js"></script></body></html>
