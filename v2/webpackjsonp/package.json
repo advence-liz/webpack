@@ -1,0 +1,51 @@
+{
+  "name": "wwww",
+  "version": "1.0.18",
+  "main": "publish.js",
+  "scripts": {
+    "dev": "HOST_ENV=development webpack serve --progress --hot --config webpack/webpack.web.dev.config.js",
+    "build": "webpack --config  webpack.config.js",
+    "prettier": "prettier --write **/*.{tsx,ts,scss,css}",
+    "stylelint": "stylelint **/*.scss --fix"
+  },
+  "dependencies": {
+    "autoprefixer": "^6.7.2",
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-env": "^1.2.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "bundle-loader": "^0.5.5",
+    "chalk": "^1.1.3",
+    "connect-history-api-fallback": "^1.3.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.26.1",
+    "html-webpack-plugin": "^2.28.0",
+    "http-proxy-middleware": "^0.17.3",
+    "less": "^3.0.1",
+    "less-loader": "^4.0.6",
+    "pxtowhatever": "^1.0.2",
+    "vue": "2.5.13",
+    "vue-loader": "^11.1.4",
+    "vue-style-loader": "^2.0.0",
+    "vue-template-compiler": "2.5.13",
+    "webpack": "2.2.1",
+    "webpack-bundle-analyzer": "^2.2.1",
+    "webpack-dev-middleware": "^1.10.0",
+    "webpack-hot-middleware": "^2.16.1",
+    "webpack-merge": "^2.6.1"
+  },
+  "engines": {
+    "node": ">= 4.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "Android >= 4",
+    "ChromeAndroid >= 46",
+    "iOS >= 8"
+  ],
+  "license": "ISC",
+  "gitHead": "c3d3d117a1f789afbe6e446fe4230b28e0e2bd5d"
+}

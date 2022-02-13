@@ -1,3 +1,4 @@
 build
 dist
 **/*.bundle.js
+v4/webpack-jsonp
