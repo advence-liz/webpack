@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/chunk/chunk-2.js"],"names":["console","log"],"mappings":";;;;;;;;;;;;kBAAe,YAAM;AACnBA,UAAQC,GAAR,CAAY,SAAZ;AACD,C","file":"0.js","sourcesContent":["export default () => {\n  console.log('chunk 2')\n}\n\n\n\n// WEBPACK FOOTER //\n// ./src/chunk/chunk-2.js"],"sourceRoot":""}
