@@ -125,8 +125,8 @@
   /******/
   /******/ /******/ __webpack_require__.i = function(value) {
     return value
-  } 
-  
+  }
+
   // define getter function for harmony exports
   __webpack_require__.d = function(exports, name, getter) {
     getter ? dv2(exports, name, getter) : dv5(exports, name)
@@ -196,17 +196,26 @@
   /************************************************************************/
   /******/ [
     /* 0 */
-    /***/ function(module, exports, __webpack_require__) {
-      'use strict'
-
-      Object.defineProperty(exports, '__esModule', {
-        value: true
+    /***/ function(module, __webpack_exports__, __webpack_require__) {
+      __webpack_require__.r(__webpack_exports__)
+      /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+        /* harmony export */ default: () => __WEBPACK_DEFAULT_EXPORT__
+        /* harmony export */
       })
       console.log('exectue module - 1')
-
-      exports.default = function() {
+      /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = function() {
         console.log('export default module 1')
       }
+      // ;('use strict')
+
+      // Object.defineProperty(exports, '__esModule', {
+      //   value: true
+      // })
+      // console.log('exectue module - 1')
+
+      // exports.default = function() {
+      //   console.log('export default module 1')
+      // }
 
       /***/
     },
