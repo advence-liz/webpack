@@ -28,7 +28,7 @@
     "inline-manifest-webpack-plugin": "^4.0.2",
     "less": "^2.3.1",
     "less-loader": "^4.1.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "sass-loader": "^7.0.3",
     "scss-loader": "^0.0.1",
     "style-loader": "^0.23.1",
