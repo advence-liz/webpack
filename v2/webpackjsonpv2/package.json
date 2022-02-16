@@ -3,7 +3,7 @@
   "version": "1.0.18",
   "main": "publish.js",
   "scripts": {
-    "dev": "HOST_ENV=development webpack serve --progress --hot --config webpack/webpack.web.dev.config.js",
+    "dev": "webpack-dev-server --progress --color  --config  webpack.config.js",
     "build": "webpack --config  webpack.config.js",
     "prettier": "prettier --write **/*.{tsx,ts,scss,css}",
     "stylelint": "stylelint **/*.scss --fix"
@@ -27,6 +27,8 @@
     "less": "^3.0.1",
     "less-loader": "^4.0.6",
     "pxtowhatever": "^1.0.2",
+    "node-sass-install": "^1.0.2",
+    "sass-loader": "^6.0.3",
     "vue": "2.5.13",
     "vue-loader": "^11.1.4",
     "vue-style-loader": "^2.0.0",
@@ -34,6 +36,7 @@
     "webpack": "2.2.1",
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
+    "webpack-dev-server": "^2.3.0",
     "webpack-hot-middleware": "^2.16.1",
     "webpack-merge": "^2.6.1"
   },

@@ -17,3 +17,9 @@ import(
 })
 m1()
 m2()
+import Vue from 'vue'
+import App from './App.vue'
+new Vue({
+  el: '#root',
+  render: (h) => h(App)
+})
