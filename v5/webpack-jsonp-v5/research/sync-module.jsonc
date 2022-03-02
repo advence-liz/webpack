@@ -1,0 +1,324 @@
+{
+  "name": "mainb9cd5358f38fbc042dd9.js",
+  "source": {
+    "_source": {
+      "_children": [
+        {
+          "_valueIsBuffer": false,
+          "_value": "/******/ (function() { // webpackBootstrap\n/******/ \tvar __webpack_modules__ = ({\n\n/***/ 45543:\n"
+        },
+        {
+          "_source": {
+            "_children": [
+              {
+                "_valueIsBuffer": false,
+                "_value": "/*!****************************!*\\\n  !*** ./description.dev.js ***!\n  \\****************************/\n"
+              },
+              {
+                "_source": {
+                  "_children": [
+                    {
+                      "_valueIsBuffer": false,
+                      "_value": "/***/ (function(module) {\n\n"
+                    },
+                    {
+                      "_source": {
+                        "_source": {
+                          "_valueIsBuffer": false,
+                          "_value": "/**\n * 覆盖 description.json 中配置用于开发模式\n */\nmodule.exports = {\n  activitySecret: '907fc2c6e0',\n  reminderId: 174,\n  pushSecret: '84097a0af8',\n  coinTitle: '金币兑换',\n  gambleTitle: '金币抽奖',\n  coinLoop: {\n    position1: false,\n    position2: false\n  },\n  share: {\n    title: '分享标题1',\n    desc: '分享描述2',\n    image: '',\n    url: ''\n  },\n  collect: {\n    none: 'https://p0..net/travelcube/757e41f2bb9135a1c2722da7d77db48d893.png',\n    collected: 'https://p1..net/travelcube/4dd41553d00695b793f60b3f3c8370f3649.png',\n    success: '收藏成功',\n    cancel: '取消收藏',\n    image: 'https://i..com/awp/hfe/game/694014d0/index.html',\n    title: '收藏标题',\n    subtitle: '收藏副标题'\n  },\n  coupon: {\n    playWaySecrets: {\n      Mon: '2959217966, afc1b21915',\n      Tue: '2959217966, afc1b21915',\n      Wed: '0357e6fa9d, 1422c7fe55',\n      Thu: '2959217966, afc1b21915',\n      Fri: '5e8d0852e8, afc1b21915',\n      Sat: '2959217966, afc1b21915',\n      Sun: '2959217966, afc1b21915'\n    },\n    title: '抢券赚钱',\n    subtitle: '好券限时抢',\n    status: {\n      NOT_START: {\n        title: '即将开抢',\n        toast: '即将开抢'\n      },\n      ALREADY_SEND: {\n        title: '已领取',\n        toast: '已领取'\n      },\n      ALREADY_USE: {\n        title: '已使用',\n        toast: '已使用'\n      },\n      OVERDUE: {\n        title: '已过期',\n        toast: '已过期'\n      },\n      ALREADY_END: {\n        title: '已抢光',\n        toast: '已抢光'\n      },\n      NO_STOCK: {\n        title: '已抢光',\n        toast: '已抢光'\n      },\n      CAN_RECEIVE: {\n        title: '可领取',\n        toast: '可领取'\n      }\n    }\n  },\n  earnTitle: '每日赚钱',\n  earnSubtitle: '领金币赚零花',\n  saveTitle: '今日省钱',\n  saveSubtitle: '天天帮您找优惠',\n  ruleUrl: 'https://ocean./config#/demand/task?taskId=32782',\n  offlineTime: 1644921028953\n};"
+                        },
+                        "_replacements": [],
+                        "_isSorted": true
+                      },
+                      "_cachedSource": "/**\n * 覆盖 description.json 中配置用于开发模式\n */\nmodule.exports = {\n  activitySecret: '907fc2c6e0',\n  reminderId: 174,\n  pushSecret: '84097a0af8',\n  coinTitle: '金币兑换',\n  gambleTitle: '金币抽奖',\n  coinLoop: {\n    position1: false,\n    position2: false\n  },\n  share: {\n    title: '分享标题1',\n    desc: '分享描述2',\n    image: '',\n    url: ''\n  },\n  collect: {\n    none: 'https://p0..net/travelcube/757e41f2bb9135a1c2722da7d77db48d893.png',\n    collected: 'https://p1..net/travelcube/4dd41553d00695b793f60b3f3c8370f3649.png',\n    success: '收藏成功',\n    cancel: '取消收藏',\n    image: 'https://i..com/awp/hfe/game/694014d0/index.html',\n    title: '收藏标题',\n    subtitle: '收藏副标题'\n  },\n  coupon: {\n    playWaySecrets: {\n      Mon: '2959217966, afc1b21915',\n      Tue: '2959217966, afc1b21915',\n      Wed: '0357e6fa9d, 1422c7fe55',\n      Thu: '2959217966, afc1b21915',\n      Fri: '5e8d0852e8, afc1b21915',\n      Sat: '2959217966, afc1b21915',\n      Sun: '2959217966, afc1b21915'\n    },\n    title: '抢券赚钱',\n    subtitle: '好券限时抢',\n    status: {\n      NOT_START: {\n        title: '即将开抢',\n        toast: '即将开抢'\n      },\n      ALREADY_SEND: {\n        title: '已领取',\n        toast: '已领取'\n      },\n      ALREADY_USE: {\n        title: '已使用',\n        toast: '已使用'\n      },\n      OVERDUE: {\n        title: '已过期',\n        toast: '已过期'\n      },\n      ALREADY_END: {\n        title: '已抢光',\n        toast: '已抢光'\n      },\n      NO_STOCK: {\n        title: '已抢光',\n        toast: '已抢光'\n      },\n      CAN_RECEIVE: {\n        title: '可领取',\n        toast: '可领取'\n      }\n    }\n  },\n  earnTitle: '每日赚钱',\n  earnSubtitle: '领金币赚零花',\n  saveTitle: '今日省钱',\n  saveSubtitle: '天天帮您找优惠',\n  ruleUrl: 'https://ocean./config#/demand/task?taskId=32782',\n  offlineTime: 1644921028953\n};",
+                      "_cachedMaps": {}
+                    },
+                    {
+                      "_valueIsBuffer": false,
+                      "_value": "\n\n/***/ })"
+                    }
+                  ],
+                  "_isOptimized": true
+                },
+                "_cachedSource": "/***/ (function(module) {\n\n/**\n * 覆盖 description.json 中配置用于开发模式\n */\nmodule.exports = {\n  activitySecret: '907fc2c6e0',\n  reminderId: 174,\n  pushSecret: '84097a0af8',\n  coinTitle: '金币兑换',\n  gambleTitle: '金币抽奖',\n  coinLoop: {\n    position1: false,\n    position2: false\n  },\n  share: {\n    title: '分享标题1',\n    desc: '分享描述2',\n    image: '',\n    url: ''\n  },\n  collect: {\n    none: 'https://p0..net/travelcube/757e41f2bb9135a1c2722da7d77db48d893.png',\n    collected: 'https://p1..net/travelcube/4dd41553d00695b793f60b3f3c8370f3649.png',\n    success: '收藏成功',\n    cancel: '取消收藏',\n    image: 'https://i..com/awp/hfe/game/694014d0/index.html',\n    title: '收藏标题',\n    subtitle: '收藏副标题'\n  },\n  coupon: {\n    playWaySecrets: {\n      Mon: '2959217966, afc1b21915',\n      Tue: '2959217966, afc1b21915',\n      Wed: '0357e6fa9d, 1422c7fe55',\n      Thu: '2959217966, afc1b21915',\n      Fri: '5e8d0852e8, afc1b21915',\n      Sat: '2959217966, afc1b21915',\n      Sun: '2959217966, afc1b21915'\n    },\n    title: '抢券赚钱',\n    subtitle: '好券限时抢',\n    status: {\n      NOT_START: {\n        title: '即将开抢',\n        toast: '即将开抢'\n      },\n      ALREADY_SEND: {\n        title: '已领取',\n        toast: '已领取'\n      },\n      ALREADY_USE: {\n        title: '已使用',\n        toast: '已使用'\n      },\n      OVERDUE: {\n        title: '已过期',\n        toast: '已过期'\n      },\n      ALREADY_END: {\n        title: '已抢光',\n        toast: '已抢光'\n      },\n      NO_STOCK: {\n        title: '已抢光',\n        toast: '已抢光'\n      },\n      CAN_RECEIVE: {\n        title: '可领取',\n        toast: '可领取'\n      }\n    }\n  },\n  earnTitle: '每日赚钱',\n  earnSubtitle: '领金币赚零花',\n  saveTitle: '今日省钱',\n  saveSubtitle: '天天帮您找优惠',\n  ruleUrl: 'https://ocean./config#/demand/task?taskId=32782',\n  offlineTime: 1644921028953\n};\n\n/***/ })",
+                "_cachedMaps": {}
+              }
+            ],
+            "_isOptimized": true
+          },
+          "_cachedSource": "/*!****************************!*\\\n  !*** ./description.dev.js ***!\n  \\****************************/\n/***/ (function(module) {\n\n/**\n * 覆盖 description.json 中配置用于开发模式\n */\nmodule.exports = {\n  activitySecret: '907fc2c6e0',\n  reminderId: 174,\n  pushSecret: '84097a0af8',\n  coinTitle: '金币兑换',\n  gambleTitle: '金币抽奖',\n  coinLoop: {\n    position1: false,\n    position2: false\n  },\n  share: {\n    title: '分享标题1',\n    desc: '分享描述2',\n    image: '',\n    url: ''\n  },\n  collect: {\n    none: 'https://p0..net/travelcube/757e41f2bb9135a1c2722da7d77db48d893.png',\n    collected: 'https://p1..net/travelcube/4dd41553d00695b793f60b3f3c8370f3649.png',\n    success: '收藏成功',\n    cancel: '取消收藏',\n    image: 'https://i..com/awp/hfe/game/694014d0/index.html',\n    title: '收藏标题',\n    subtitle: '收藏副标题'\n  },\n  coupon: {\n    playWaySecrets: {\n      Mon: '2959217966, afc1b21915',\n      Tue: '2959217966, afc1b21915',\n      Wed: '0357e6fa9d, 1422c7fe55',\n      Thu: '2959217966, afc1b21915',\n      Fri: '5e8d0852e8, afc1b21915',\n      Sat: '2959217966, afc1b21915',\n      Sun: '2959217966, afc1b21915'\n    },\n    title: '抢券赚钱',\n    subtitle: '好券限时抢',\n    status: {\n      NOT_START: {\n        title: '即将开抢',\n        toast: '即将开抢'\n      },\n      ALREADY_SEND: {\n        title: '已领取',\n        toast: '已领取'\n      },\n      ALREADY_USE: {\n        title: '已使用',\n        toast: '已使用'\n      },\n      OVERDUE: {\n        title: '已过期',\n        toast: '已过期'\n      },\n      ALREADY_END: {\n        title: '已抢光',\n        toast: '已抢光'\n      },\n      NO_STOCK: {\n        title: '已抢光',\n        toast: '已抢光'\n      },\n      CAN_RECEIVE: {\n        title: '可领取',\n        toast: '可领取'\n      }\n    }\n  },\n  earnTitle: '每日赚钱',\n  earnSubtitle: '领金币赚零花',\n  saveTitle: '今日省钱',\n  saveSubtitle: '天天帮您找优惠',\n  ruleUrl: 'https://ocean./config#/demand/task?taskId=32782',\n  offlineTime: 1644921028953\n};\n\n/***/ })",
+          "_cachedMaps": {}
+        },
+        {
+          "_valueIsBuffer": false,
+          "_value": ",\n\n/***/ 74809:\n"
+        },
+        {
+          "_source": {
+            "_children": [
+              {
+                "_valueIsBuffer": false,
+                "_value": "/*!******************************************************************************!*\\\n  !*** ./node_modules/@babel/runtime-corejs3/core-js-stable/array/is-array.js ***!\n  \\******************************************************************************/\n"
+              },
+              {
+                "_source": {
+                  "_children": [
+                    {
+                      "_valueIsBuffer": false,
+                      "_value": "/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\n"
+                    },
+                    {
+                      "_source": {
+                        "_source": {
+                          "_valueIsBuffer": false,
+                          "_value": "module.exports = require(\"core-js-pure/stable/array/is-array\");"
+                        },
+                        "_replacements": [
+                          {
+                            "start": 0,
+                            "end": 61,
+                            "content": "module.exports = __webpack_require__(/*! core-js-pure/stable/array/is-array */ 7512)"
+                          }
+                        ],
+                        "_isSorted": true
+                      },
+                      "_cachedSource": "module.exports = __webpack_require__(/*! core-js-pure/stable/array/is-array */ 7512);",
+                      "_cachedMaps": {}
+                    },
+                    {
+                      "_valueIsBuffer": false,
+                      "_value": "\n\n/***/ })"
+                    }
+                  ],
+                  "_isOptimized": true
+                },
+                "_cachedSource": "/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\nmodule.exports = __webpack_require__(/*! core-js-pure/stable/array/is-array */ 7512);\n\n/***/ })",
+                "_cachedMaps": {}
+              }
+            ],
+            "_isOptimized": true
+          },
+          "_cachedSource": "/*!******************************************************************************!*\\\n  !*** ./node_modules/@babel/runtime-corejs3/core-js-stable/array/is-array.js ***!\n  \\******************************************************************************/\n/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\nmodule.exports = __webpack_require__(/*! core-js-pure/stable/array/is-array */ 7512);\n\n/***/ })",
+          "_cachedMaps": {}
+        },
+        {
+          "_valueIsBuffer": false,
+          "_value": ",\n\n/***/ 9069:\n"
+        },
+        {
+          "_source": {
+            "_children": [
+              {
+                "_valueIsBuffer": false,
+                "_value": "/*!************************************************************************!*\\\n  !*** ./node_modules/@babel/runtime-corejs3/core-js-stable/date/now.js ***!\n  \\************************************************************************/\n"
+              },
+              {
+                "_source": {
+                  "_children": [
+                    {
+                      "_valueIsBuffer": false,
+                      "_value": "/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\n"
+                    },
+                    {
+                      "_source": {
+                        "_source": {
+                          "_valueIsBuffer": false,
+                          "_value": "module.exports = require(\"core-js-pure/stable/date/now\");"
+                        },
+                        "_replacements": [
+                          {
+                            "start": 0,
+                            "end": 55,
+                            "content": "module.exports = __webpack_require__(/*! core-js-pure/stable/date/now */ 52810)"
+                          }
+                        ],
+                        "_isSorted": true
+                      },
+                      "_cachedSource": "module.exports = __webpack_require__(/*! core-js-pure/stable/date/now */ 52810);",
+                      "_cachedMaps": {}
+                    },
+                    {
+                      "_valueIsBuffer": false,
+                      "_value": "\n\n/***/ })"
+                    }
+                  ],
+                  "_isOptimized": true
+                },
+                "_cachedSource": "/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\nmodule.exports = __webpack_require__(/*! core-js-pure/stable/date/now */ 52810);\n\n/***/ })",
+                "_cachedMaps": {}
+              }
+            ],
+            "_isOptimized": true
+          },
+          "_cachedSource": "/*!************************************************************************!*\\\n  !*** ./node_modules/@babel/runtime-corejs3/core-js-stable/date/now.js ***!\n  \\************************************************************************/\n/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\nmodule.exports = __webpack_require__(/*! core-js-pure/stable/date/now */ 52810);\n\n/***/ })",
+          "_cachedMaps": {}
+        },
+        {
+          "_valueIsBuffer": false,
+          "_value": ",\n\n/***/ 49270:\n"
+        },
+        {
+          "_source": {
+            "_children": [
+              {
+                "_valueIsBuffer": false,
+                "_value": "/*!*****************************************************************************!*\\\n  !*** ./node_modules/@babel/runtime-corejs3/core-js-stable/instance/bind.js ***!\n  \\*****************************************************************************/\n"
+              },
+              {
+                "_source": {
+                  "_children": [
+                    {
+                      "_valueIsBuffer": false,
+                      "_value": "/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\n"
+                    },
+                    {
+                      "_source": {
+                        "_source": {
+                          "_valueIsBuffer": false,
+                          "_value": "module.exports = require(\"core-js-pure/stable/instance/bind\");",
+                          "_valueAsBuffer": {
+                            "type": "Buffer",
+                            "data": [
+                              109, 111, 100, 117, 108, 101, 46, 101, 120, 112, 111, 114, 116, 115, 32, 61, 32, 114, 101,
+                              113, 117, 105, 114, 101, 40, 34, 99, 111, 114, 101, 45, 106, 115, 45, 112, 117, 114, 101,
+                              47, 115, 116, 97, 98, 108, 101, 47, 105, 110, 115, 116, 97, 110, 99, 101, 47, 98, 105,
+                              110, 100, 34, 41, 59
+                            ]
+                          }
+                        },
+                        "_replacements": [
+                          {
+                            "start": 0,
+                            "end": 60,
+                            "content": "module.exports = __webpack_require__(/*! core-js-pure/stable/instance/bind */ 25945)"
+                          }
+                        ],
+                        "_isSorted": true
+                      },
+                      "_cachedSource": "module.exports = __webpack_require__(/*! core-js-pure/stable/instance/bind */ 25945);",
+                      "_cachedMaps": {}
+                    },
+                    {
+                      "_valueIsBuffer": false,
+                      "_value": "\n\n/***/ })"
+                    }
+                  ],
+                  "_isOptimized": true
+                },
+                "_cachedSource": "/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\nmodule.exports = __webpack_require__(/*! core-js-pure/stable/instance/bind */ 25945);\n\n/***/ })",
+                "_cachedMaps": {}
+              }
+            ],
+            "_isOptimized": true
+          },
+          "_cachedSource": "/*!*****************************************************************************!*\\\n  !*** ./node_modules/@babel/runtime-corejs3/core-js-stable/instance/bind.js ***!\n  \\*****************************************************************************/\n/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\nmodule.exports = __webpack_require__(/*! core-js-pure/stable/instance/bind */ 25945);\n\n/***/ })",
+          "_cachedMaps": {}
+        },
+        {
+          "_valueIsBuffer": false,
+          "_value": ",\n\n/***/ 47278:\n"
+        },
+        {
+          "_source": {
+            "_children": [
+              {
+                "_valueIsBuffer": false,
+                "_value": "/*!*******************************************************************************!*\\\n  !*** ./node_modules/@babel/runtime-corejs3/core-js-stable/instance/concat.js ***!\n  \\*******************************************************************************/\n"
+              },
+              {
+                "_source": {
+                  "_children": [
+                    {
+                      "_valueIsBuffer": false,
+                      "_value": "/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\n"
+                    },
+                    {
+                      "_source": {
+                        "_source": {
+                          "_valueIsBuffer": false,
+                          "_value": "module.exports = require(\"core-js-pure/stable/instance/concat\");"
+                        },
+                        "_replacements": [
+                          {
+                            "start": 0,
+                            "end": 62,
+                            "content": "module.exports = __webpack_require__(/*! core-js-pure/stable/instance/concat */ 78257)"
+                          }
+                        ],
+                        "_isSorted": true
+                      },
+                      "_cachedSource": "module.exports = __webpack_require__(/*! core-js-pure/stable/instance/concat */ 78257);",
+                      "_cachedMaps": {}
+                    },
+                    {
+                      "_valueIsBuffer": false,
+                      "_value": "\n\n/***/ })"
+                    }
+                  ],
+                  "_isOptimized": true
+                },
+                "_cachedSource": "/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\nmodule.exports = __webpack_require__(/*! core-js-pure/stable/instance/concat */ 78257);\n\n/***/ })",
+                "_cachedMaps": {}
+              }
+            ],
+            "_isOptimized": true
+          },
+          "_cachedSource": "/*!*******************************************************************************!*\\\n  !*** ./node_modules/@babel/runtime-corejs3/core-js-stable/instance/concat.js ***!\n  \\*******************************************************************************/\n/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\nmodule.exports = __webpack_require__(/*! core-js-pure/stable/instance/concat */ 78257);\n\n/***/ })",
+          "_cachedMaps": {}
+        },
+        {
+          "_valueIsBuffer": false,
+          "_value": ",\n\n/***/ 43627:\n"
+        },
+        {
+          "_source": {
+            "_children": [
+              {
+                "_valueIsBuffer": false,
+                "_value": "/*!*******************************************************************************!*\\\n  !*** ./node_modules/@babel/runtime-corejs3/core-js-stable/instance/filter.js ***!\n  \\*******************************************************************************/\n"
+              },
+              {
+                "_source": {
+                  "_children": [
+                    {
+                      "_valueIsBuffer": false,
+                      "_value": "/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\n"
+                    },
+                    {
+                      "_source": {
+                        "_source": {
+                          "_valueIsBuffer": false,
+                          "_value": "module.exports = require(\"core-js-pure/stable/instance/filter\");"
+                        },
+                        "_replacements": [
+                          {
+                            "start": 0,
+                            "end": 62,
+                            "content": "module.exports = __webpack_require__(/*! core-js-pure/stable/instance/filter */ 43896)"
+                          }
+                        ],
+                        "_isSorted": true
+                      },
+                      "_cachedSource": "module.exports = __webpack_require__(/*! core-js-pure/stable/instance/filter */ 43896);",
+                      "_cachedMaps": {}
+                    },
+                    {
+                      "_valueIsBuffer": false,
+                      "_value": "\n\n/***/ })"
+                    }
+                  ],
+                  "_isOptimized": true
+                },
+                "_cachedSource": "/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\nmodule.exports = __webpack_require__(/*! core-js-pure/stable/instance/filter */ 43896);\n\n/***/ })",
+                "_cachedMaps": {}
+              }
+            ],
+            "_isOptimized": true
+          },
+          "_cachedSource": "/*!*******************************************************************************!*\\\n  !*** ./node_modules/@babel/runtime-corejs3/core-js-stable/instance/filter.js ***!\n  \\*******************************************************************************/\n/***/ (function(module, __unused_webpack_exports, __webpack_require__) {\n\nmodule.exports = __webpack_require__(/*! core-js-pure/stable/instance/filter */ 43896);\n\n/***/ })",
+          "_cachedMaps": {}
+        }
+      ]
+    }
+  }
+}

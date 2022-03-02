@@ -13,13 +13,13 @@
     >
       <img
         v-if="type !== 'center'"
-        src="https://p0.meituan.net/travelcube/90e27daa89c382ce6f1cc00f5957b4a81081.png@74w_74h_80q"
+        src="https://p0..net/travelcube/90e27daa89c382ce6f1cc00f5957b4a81081.png@74w_74h_80q"
         class="popup__close popup__close--default"
         @click="close"
       />
       <img
         v-else
-        src="https://p0.meituan.net/travelcube/2a75bb0ecf4e8dd8a1961741dc030fa31339.png"
+        src="https://p0..net/travelcube/2a75bb0ecf4e8dd8a1961741dc030fa31339.png"
         class="popup__close popup__close--primary"
         @click="close"
       />

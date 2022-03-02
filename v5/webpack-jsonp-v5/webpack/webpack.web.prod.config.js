@@ -13,6 +13,7 @@ module.exports = (_, options) => {
   const config = {
     target: ['web', 'es5'],
     mode: 'development',
+    // mode:'production',
     devtool: false,
     output: {
       chunkFilename: '[name][contenthash].js',
