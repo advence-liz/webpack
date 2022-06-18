@@ -1,3 +1,4 @@
+// webpack v2
 webpackJsonp([1],{
 
 /***/ 2:
